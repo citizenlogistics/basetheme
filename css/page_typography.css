@@ -1,0 +1,37 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+
+em {
+  color: #644;
+  font-style: normal;
+}
+
+big {
+  font-weight: bold;
+}
+
+input.prompting, textarea.prompting {
+  font-style:italic;
+  color: #D8D8D8;
+  color: #bbb;
+}
+
+.spacebelow {
+  margin-bottom: 10px;
+}
+
+.xspace {
+  margin-top: 16px;
+}
+
+.clear {
+  clear:both;
+}
+
+hr.spacer {
+  color:transparent;
+  background:transparent;
+  border:none;
+}
