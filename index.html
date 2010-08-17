@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+  <title>Groundcrew Base Theme Test</title>
+	<link href="BUILD/base.css" media="screen" rel="stylesheet" type="text/css"/>
+</head>
+
+<body class="loading collapsed">
+  <div id="header" class="magic">
+    <div id="header_inside">
+      <h1>Header Label</h1>
+      <img id="load_spinner" src="i/spinner.gif"/>
+      <div id="header_middle"><div id="youbox" fill="youbox"></div></div>
+      <div id="search_box">
+        <div id="soc_logins">
+          <fb:login-button class="fbloo" perms="sms,email,user_location">Sign in</fb:login-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tools" class="magic">
+    <style>
+      .foo_tool {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 28px;
+      }
+    </style>
+    <div class="foo_tool">
+      I am foo tool.
+      <form id="foo">
+        <input type="text" hint="bababa" name="bar"/>
+        <button type="submit">submit</button>
+      </form>
+    </div>
+    <script>
+      App = {
+        initialize: function() { go('tool=foo'); },
+        foo_submitted: function(data) { alert('got: ' + data.bar); }
+       };
+    </script>
+  </div>
+
+  <div id="fb-root"></div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script src="gojs/go.js"></script>
+  <script src="js/base.js"></script>
+  <script async="true" src="http://connect.facebook.net/en_US/all.js"></script>
+  <script> App.initialize(); </script>
+</body>
+</html>

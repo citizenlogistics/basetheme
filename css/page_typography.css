@@ -18,6 +18,8 @@ input.prompting, textarea.prompting {
   color: #bbb;
 }
 
+p { margin: 0 0 1em 0; }
+
 .spacebelow {
   margin-bottom: 10px;
 }
