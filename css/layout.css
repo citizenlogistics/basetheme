@@ -48,6 +48,12 @@ body { padding-bottom: 30px; }
     position: absolute;
 }
 
+#tools > div.active.bigwhite {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 28px;
+}
+
 .collapsed #header_inside { margin-left: 0px;}
 
 /* when collapsed, h1 goes over header */

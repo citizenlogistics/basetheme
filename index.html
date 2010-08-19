@@ -5,40 +5,42 @@
 </head>
 
 <body class="loading collapsed">
-  <div id="header" class="magic">
-    <div id="header_inside">
-      <h1>Header Label</h1>
-      <img id="load_spinner" src="i/spinner.gif"/>
-      <div id="header_middle"><div id="youbox" fill="youbox"></div></div>
-      <div id="search_box">
-        <div id="soc_logins">
-          <fb:login-button class="fbloo" perms="sms,email,user_location">Sign in</fb:login-button>
+  <div id="wholepage">
+    <div id="header" class="magic">
+      <div id="header_inside">
+        <h1>Header Label</h1>
+        <img id="load_spinner" src="i/spinner.gif"/>
+        <div id="header_middle"><div id="youbox" fill="youbox"></div></div>
+        <div id="search_box">
+          <div id="soc_logins">
+            <fb:login-button class="fbloo" perms="sms,email,user_location">Sign in</fb:login-button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div id="tools" class="magic">
-    <style>
-      .foo_tool {
-        text-align: center;
-        margin-top: 40px;
-        font-size: 28px;
-      }
-    </style>
-    <div class="foo_tool">
-      I am foo tool.
-      <form id="foo">
-        <input type="text" hint="bababa" name="bar"/>
-        <button type="submit">submit</button>
-      </form>
+    <div id="tools" class="magic">
+      <div class="foo_tool bigwhite">
+        I am foo tool.
+
+        <form id="foo">
+          <input type="text" hint="bababa" name="bar"/>
+          <button type="submit">submit</button>
+        </form>
+      </div>
+      <script>
+        App = {
+          initialize: function() { go('tool=foo'); },
+          foo_submitted: function(data) { alert('got: ' + data.bar); }
+         };
+      </script>
     </div>
-    <script>
-      App = {
-        initialize: function() { go('tool=foo'); },
-        foo_submitted: function(data) { alert('got: ' + data.bar); }
-       };
-    </script>
+    <div id="footer">
+      &copy; 2010 Citizen Logistics, Inc. &mdash;
+      <a href="http://groundcrew.us">about</a>     &nbsp;
+      <a href="http://blog.groundcrew.us">blog</a> &nbsp;
+      <a href="http://groundcrew.us/tos">terms</a>
+    </div>
   </div>
 
   <div id="fb-root"></div>
