@@ -35,6 +35,9 @@ body.logged_out .loo {
   display: inline;
 }
 
+.iphone_only { display:none; }
+body.ios .iphone_only { display:block; }
+
 #unsupported {
   position: absolute;
   top: 4px;
