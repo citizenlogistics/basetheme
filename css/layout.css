@@ -66,18 +66,14 @@ body { padding-bottom: 30px; }
     padding: 6px 20px;
     font-size: 15px;
     left: 30px;
-    bottom: 0px;
-    border-bottom: solid 1px #138;
     background-color: transparent;
 
-    border-bottom: solid thin #444;
-    border-top: solid thin #808080;
     background-image: -webkit-gradient(
      linear, 0% 0%, 100% 0%,
      from(rgba(47,108,207,.0)),
-     color-stop(10%, rgba(47,108,207,.6)),
+     color-stop(10%, rgba(47,108,207,.75)),
      color-stop(50%, rgba(47,108,207,.85)),
-     color-stop(90%, rgba(47,108,207,.6)),
+     color-stop(90%, rgba(47,108,207,.75)),
      to(rgba(47,108,207,.0)));
     text-shadow: #444 0px -1px 1px;
 
