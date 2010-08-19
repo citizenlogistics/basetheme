@@ -2,6 +2,22 @@ body.loading .hide_until_loaded { display: none; }
 
 /* DEFAULTS FOR POSITIONING */
 
+html, body { height: 100%; }
+#wholepage { min-height: 100%; position: relative; }
+body { padding-bottom: 30px; }
+
+#footer {
+    height: 30px;
+    text-align: center;
+    color: #666;
+    z-index: 3;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer a { color: #0066CC; }
+
 #header, #header_inside, #header_middle, #search_box, #tools, #tools>div {
     position: absolute;
     left:0; bottom: 0; top: 0; right: 0;
@@ -12,7 +28,7 @@ body.loading .hide_until_loaded { display: none; }
 
 #header          { height: 30px; }
 
-#tools  { margin-top: 30px; }
+#tools  { margin-top: 30px; margin-bottom: 30px; }
 
 #header     { z-index:  1; }
 
