@@ -3,8 +3,18 @@ function reload_user(){
   if (user) $.extend(window, eval('(' + user + ')'));
 }
 
-$("body").bind("ajaxSend", function(){
-  $(this).addClass('refresh');
-}).bind("ajaxComplete", function(event, req, settings){
-  $(this).removeClass('refresh');
-});
+function watch_location(){
+  navigator.geolocation && navigator.geolocation.watchPosition(function(position) {
+    var loc = position.coords.latitude + "," + position.coords.longitude;
+    $.get('/api/checkin', { lat: position.coords.latitude, lng: position.coords.longitude });
+  });
+}
+
+User = {
+  fb_login: function(after, uid) {
+    $.post('/api/me/contact_methods', {'url': 'facebook:' + uid}, function(){
+      reload_user();
+      after && after();
+    });
+  }
+};
