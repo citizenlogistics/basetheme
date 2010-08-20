@@ -58,6 +58,14 @@ html, body { height: 100%; }
     font-size: 28px;
 }
 
+.ios #tools > div.active.bigwhite {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .collapsed #header_inside { margin-left: 0px;}
 
 /* when collapsed, h1 goes over header */
