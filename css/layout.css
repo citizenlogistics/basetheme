@@ -3,11 +3,24 @@ body.loading .hide_until_loaded { display: none; }
 /* DEFAULTS FOR POSITIONING */
 
 html, body { height: 100%; }
-#wholepage { min-height: 100%; position: relative; }
-body { padding-bottom: 30px; }
+
+#wholepage { position: relative; min-height: 100%; }
+
+#tools {
+    min-height: 100%;
+    padding-top: 30px;
+}
+
+#tools > div.active {
+    overflow:auto;
+	padding-bottom: 40px;  /* must be same height as the footer */
+}
 
 #footer {
-    height: 30px;
+    position: relative;
+	margin-top: -40px; /* negative value of footer height */
+	height: 40px;
+	clear:both;
     text-align: center;
     color: #666;
     z-index: 3;
@@ -18,20 +31,15 @@ body { padding-bottom: 30px; }
 
 #footer a { color: #0066CC; }
 
-#header, #header_inside, #header_middle, #search_box, #tools, #tools>div {
+#header, #header_inside, #header_middle, #search_box {
     position: absolute;
     left:0; bottom: 0; top: 0; right: 0;
     width: auto; height: auto;
 }
 
 #header_middle { text-align: center; top: auto; bottom: 4px; }
-
 #header          { height: 30px; }
-
-#tools  { margin-top: 30px; margin-bottom: 30px; }
-
 #header     { z-index:  1; }
-
 #header  { -webkit-box-shadow: 0px  4px 7px rgba(0,0,0,0.7); -moz-box-shadow: 0px  4px 7px rgba(0,0,0,0.7); }
 #header  { background: url(i/background_header.png); }
 #header { color: white; }
@@ -42,15 +50,11 @@ body { padding-bottom: 30px; }
     display: block;
     margin-left: auto;
     margin-right: auto;
-    left:0px;
-    right:0px;
-    top:0px;
-    position: absolute;
 }
 
 #tools > div.active.bigwhite {
     text-align: center;
-    margin-top: 40px;
+    padding-top: 30px;
     font-size: 28px;
 }
 

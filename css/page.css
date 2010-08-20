@@ -1,6 +1,5 @@
 /* some resets */
 img { border:0; }
-body { overflow: hidden; }
 h1, body { margin:0; padding:0; }
 a { text-decoration: none; }
 form {margin:0;padding:0;}
