@@ -1,6 +1,15 @@
 body.loading .hide_until_loaded { display: none; }
 
-/* DEFAULTS FOR POSITIONING */
+body {
+    background-color: #ccc;
+    background-image: -webkit-gradient(
+     linear, 0% 0%, 100% 0%,
+     from(rgba(255,255,255,.0)),
+     color-stop(10%, rgba(255,255,255,.5)),
+     color-stop(50%, rgba(255,255,255,.75)),
+     color-stop(90%, rgba(255,255,255,.5)),
+     to(rgba(255,255,255,.0)));
+}
 
 html, body { height: 100%; }
 body#viewer { height: auto; }
@@ -32,20 +41,6 @@ body#viewer { height: auto; }
 
 #footer a { color: #0066CC; }
 
-#header, #header_inside, #header_middle, #search_box {
-    position: absolute;
-    left:0; bottom: 0; top: 0; right: 0;
-    width: auto; height: auto;
-}
-
-#header_middle { text-align: center; top: auto; bottom: 4px; }
-#header          { height: 30px; }
-#header     { z-index:  1; }
-#header  { -webkit-box-shadow: 0px  4px 7px rgba(0,0,0,0.7); -moz-box-shadow: 0px  4px 7px rgba(0,0,0,0.7); }
-#header  { background: url(i/background_header.png); }
-#header { color: white; }
-
-
 #tools > div { display:none; }
 #tools > div.active {
     display: block;
@@ -65,29 +60,4 @@ body#viewer { height: auto; }
     font-size: 16px;
     padding-left: 10px;
     padding-right: 10px;
-}
-
-.collapsed #header_inside { margin-left: 0px;}
-
-/* when collapsed, h1 goes over header */
-.collapsed #header h1 {
-    position: absolute;
-    height:14px;
-    margin-top: 1px;
-    z-index: 2;
-    right: auto; width: auto;
-    padding: 6px 20px;
-    font-size: 15px;
-    left: 30px;
-    background-color: transparent;
-
-    background-image: -webkit-gradient(
-     linear, 0% 0%, 100% 0%,
-     from(rgba(47,108,207,.0)),
-     color-stop(10%, rgba(47,108,207,.75)),
-     color-stop(50%, rgba(47,108,207,.85)),
-     color-stop(90%, rgba(47,108,207,.75)),
-     to(rgba(47,108,207,.0)));
-    text-shadow: #444 0px -1px 1px;
-
 }
