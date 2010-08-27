@@ -11,10 +11,18 @@ function watch_location(){
 }
 
 User = {
+  
   fb_login: function(after, uid) {
     $.post('/api/me/contact_methods', {'url': 'facebook:' + uid}, function(){
       reload_user();
       after && after();
     });
+  },
+  
+  fb_login_via_reload: function(uid){
+    User.fb_login(function(){
+      if (!window.authority) window.location.reload();
+    }, uid);
   }
+  
 };
