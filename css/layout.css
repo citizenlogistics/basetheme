@@ -1,5 +1,7 @@
 body.loading .hide_until_loaded { display: none; }
 
+html { overflow: hidden; }
+
 body {
     background-color: #ccc;
     background-image: -webkit-gradient(
@@ -9,6 +11,14 @@ body {
      color-stop(50%, rgba(255,255,255,.75)),
      color-stop(90%, rgba(255,255,255,.5)),
      to(rgba(255,255,255,.0)));
+    background-image: -moz-linear-gradient(
+        left,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,.5) 10%,
+        rgba(255,255,255,.75) 50%,
+        rgba(255,255,255,.5) 90%,
+        rgba(255,255,255,0) 100%
+    );
 }
 
 html, body { height: 100%; }

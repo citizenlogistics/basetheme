@@ -134,5 +134,5 @@ a.m_item:hover {
    linear, 0% 0%, 0% 100%,
    from(rgba(200,200,255,.3)),
    to(transparent));
-
+  background-image: -moz-linear-gradient(rgba(200,200,255,0.3), transparent);
 }
