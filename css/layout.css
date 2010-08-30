@@ -21,7 +21,7 @@ body {
     );
 }
 
-html, body { height: 100%; }
+body { height: 100%; }
 body#viewer { height: auto; }
 
 #wholepage { position: relative; min-height: 100%; }
