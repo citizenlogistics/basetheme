@@ -1,7 +1,5 @@
-function reload_user(){
-  var user = $.cookie('gcuser');
-  if (user) $.extend(window, eval('(' + user + ')'));
-}
+var user = $.cookie('gcuser');
+if (user) $.extend(window, eval('(' + user + ')'));
 
 function watch_location(){
   navigator.geolocation && navigator.geolocation.watchPosition(function(position) {
@@ -10,19 +8,28 @@ function watch_location(){
   });
 }
 
-User = {
+
+go.push({
+  report_error: function() {
+    $.post('/api/bugreport', {issue: This.bugreport}, go.f('#notify_error'));
+  },
   
-  fb_login: function(after, uid) {
-    $.post('/api/me/contact_methods', {'url': 'facebook:' + uid}, function(){
-      reload_user();
-      after && after();
+  facebook_login: function() {
+    $.post('/api/me/contact_methods', {'url': 'facebook:' + This.facebook_uid}, function(){
+      var user = $.cookie('gcuser');
+      if (user) $.extend(window, eval('(' + user + ')'));
+      go.dispatch('facebook_did_login') || window.location.reload();
     });
   },
   
-  fb_login_via_reload: function(uid){
-    User.fb_login(function(){
-      if (!window.authority) window.location.reload();
-    }, uid);
+  facebook_logout: function(){ 
+    window.location.href = '/api/logout';
   }
-  
-};
+});
+
+This.user = { tag: 'pAnon'};
+
+
+// back compat
+var fgo = go.f;
+go.push(window.App = {});
