@@ -15,11 +15,12 @@ StreamLoader = {
     return This.user.tag + '_' + new Date().getTime();
   },
 
-  init: function() {
+  init: function(stream_url) {
+    StreamLoader.stream_url = stream_url;
     $("body").bind("ajaxSend", function(){
       clearTimeout(StreamLoader.timer);
     }).bind("ajaxComplete", function(event, req, settings){
-      if (!req || req.status != 403 || !settings || !settings.url || settings.url.indexOf('stream.js') < 0) {
+      if (!req || req.status != 403 || !settings || !settings.url || settings.url.indexOf(StreamLoader.stream_url) < 0) {
         StreamLoader.schedule_autoload();
       }
     });
@@ -46,7 +47,7 @@ StreamLoader = {
 
   autoload: function(callback){
     if (demo) return;
-    var uri = '/api/stream.js?stream=' + window.current_stream;
+    var uri = stream_url;
     if (atevent) uri += '&since=' + atevent;
     if (This.city_id) {
       uri += '&city=' + This.city_id;
