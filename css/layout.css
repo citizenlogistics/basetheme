@@ -1,6 +1,6 @@
 body.loading .hide_until_loaded { display: none; }
 
-html { overflow: hidden; }
+html { overflow: hidden; min-height: 100%; margin: 0; }
 
 body {
     background-color: #ccc;
@@ -21,42 +21,36 @@ body {
     );
 }
 
-body { height: 100%; }
-body#viewer { height: auto; }
+/* =========================== */
+/* = layout for static pages = */
+/* =========================== */
 
-#wholepage { position: relative; min-height: 100%; }
-
-#tools {
-    min-height: 100%;
-    padding-top: 30px;
-}
-
-#tools > div.active {
-    overflow:auto;
+html { height: 100%; margin:0; }
+body#page { height: 100%; margin:0; overflow: auto; }
+body#page #tools { min-height: 100%; }
+body#page #header { height: 30px; }
+body#page #tools { margin-top: -30px; }
+body#page #footer { margin-top:-40px; height: 40px; }
+body#page #tools > div {
 	padding-bottom: 40px;  /* must be same height as the footer */
+	padding-top: 50px; /* must be same height as header */
+    margin-left: auto;
+    margin-right: auto;
 }
+
+#tools > div { display:none; }
+#tools > div.active { display: block; }
 
 #footer {
-    position: relative;
-	margin-top: -40px; /* negative value of footer height */
-	height: 40px;
 	clear:both;
     text-align: center;
     color: #666;
     z-index: 3;
-    position: absolute;
     bottom: 0;
     width: 100%;
 }
 
 #footer a { color: #0066CC; }
-
-#tools > div { display:none; }
-#tools > div.active {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 #tools > div.active.bigwhite {
     text-align: center;
@@ -71,3 +65,12 @@ body#viewer { height: auto; }
     padding-left: 10px;
     padding-right: 10px;
 }
+
+
+/* ===================== */
+/* = layout for viewer = */
+/* ===================== */
+
+body#viewer { height: auto; }
+
+body { position: relative; min-height: 100%; }
