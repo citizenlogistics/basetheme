@@ -22,9 +22,9 @@ $.extend(Resource.prototype, {
   },
 
   nearby: function(lat, lng, distance_in_meters) {
-    var x = new GLatLng(lat, lng);
+    var x = new google.maps.LatLng(lat, lng);
     return this.here().grep(function(thing){
-      var y = new GLatLng(thing.lat, thing.lng);
+      var y = new google.maps.LatLng(thing.lat, thing.lng);
       var distance = x.distanceFrom(y);
       return distance < distance_in_meters;
     });
