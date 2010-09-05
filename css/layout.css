@@ -3,6 +3,7 @@ body.loading .hide_until_loaded { display: none; }
 html { overflow: hidden; min-height: 100%; margin: 0; }
 
 body {
+    margin: 0;
     background-color: #ccc;
     background-image: -webkit-gradient(
      linear, 0% 0%, 100% 0%,
@@ -65,10 +66,3 @@ body#page #tools > div {
     padding-left: 10px;
     padding-right: 10px;
 }
-
-
-/* ===================== */
-/* = layout for viewer = */
-/* ===================== */
-
-body#viewer { height: auto; position: relative; }
