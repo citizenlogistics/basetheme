@@ -71,6 +71,4 @@ body#page #tools > div {
 /* = layout for viewer = */
 /* ===================== */
 
-body#viewer { height: auto; }
-
-body { position: relative; min-height: 100%; }
+body#viewer { height: auto; position: relative; }
