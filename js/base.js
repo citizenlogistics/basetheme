@@ -23,11 +23,16 @@ go.push({
     // otherwise user ready
     go.trigger('will_user_ready');
     go.dispatch('user_ready') || go('#user_ready_default');
+    go.trigger('did_user_ready');
   },
   
   will_user_ready: function() {
     if (window.authority) $('body').addClass( 'logged_in' );
     else $('body').addClass( 'logged_out' );
+  },
+  
+  did_user_ready: function() {
+    $('body').removeClass('loading');
   },
   
   user_ready_default: function() {
