@@ -1,57 +1,57 @@
 body.loading .hide_until_loaded { display: none; }
 
-/* DEFAULTS FOR POSITIONING */
+html { overflow: hidden; min-height: 100%; margin: 0; }
 
-html, body { height: 100%; }
-body#viewer { height: auto; }
-
-#wholepage { position: relative; min-height: 100%; }
-
-#tools {
-    min-height: 100%;
-    padding-top: 30px;
+body {
+    margin: 0;
+    background-color: #ccc;
+    background-image: -webkit-gradient(
+     linear, 0% 0%, 100% 0%,
+     from(rgba(255,255,255,.0)),
+     color-stop(10%, rgba(255,255,255,.5)),
+     color-stop(50%, rgba(255,255,255,.75)),
+     color-stop(90%, rgba(255,255,255,.5)),
+     to(rgba(255,255,255,.0)));
+    background-image: -moz-linear-gradient(
+        left,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,.5) 10%,
+        rgba(255,255,255,.75) 50%,
+        rgba(255,255,255,.5) 90%,
+        rgba(255,255,255,0) 100%
+    );
 }
 
-#tools > div.active {
-    overflow:auto;
+/* =========================== */
+/* = layout for static pages = */
+/* =========================== */
+
+html { height: 100%; margin:0; }
+body#page { height: 100%; margin:0; overflow: auto; }
+body#page #tools { min-height: 100%; }
+body#page #header { height: 30px; }
+body#page #tools { margin-top: -30px; }
+body#page #footer { margin-top:-40px; height: 40px; }
+body#page #tools > div {
 	padding-bottom: 40px;  /* must be same height as the footer */
+	padding-top: 50px; /* must be same height as header */
+    margin-left: auto;
+    margin-right: auto;
 }
+
+#tools > div { display:none; }
+#tools > div.active { display: block; }
 
 #footer {
-    position: relative;
-	margin-top: -40px; /* negative value of footer height */
-	height: 40px;
 	clear:both;
     text-align: center;
     color: #666;
     z-index: 3;
-    position: absolute;
     bottom: 0;
     width: 100%;
 }
 
 #footer a { color: #0066CC; }
-
-#header, #header_inside, #header_middle, #search_box {
-    position: absolute;
-    left:0; bottom: 0; top: 0; right: 0;
-    width: auto; height: auto;
-}
-
-#header_middle { text-align: center; top: auto; bottom: 4px; }
-#header          { height: 30px; }
-#header     { z-index:  1; }
-#header  { -webkit-box-shadow: 0px  4px 7px rgba(0,0,0,0.7); -moz-box-shadow: 0px  4px 7px rgba(0,0,0,0.7); }
-#header  { background: url(i/background_header.png); }
-#header { color: white; }
-
-
-#tools > div { display:none; }
-#tools > div.active {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 #tools > div.active.bigwhite {
     text-align: center;
@@ -65,29 +65,4 @@ body#viewer { height: auto; }
     font-size: 16px;
     padding-left: 10px;
     padding-right: 10px;
-}
-
-.collapsed #header_inside { margin-left: 0px;}
-
-/* when collapsed, h1 goes over header */
-.collapsed #header h1 {
-    position: absolute;
-    height:14px;
-    margin-top: 1px;
-    z-index: 2;
-    right: auto; width: auto;
-    padding: 6px 20px;
-    font-size: 15px;
-    left: 30px;
-    background-color: transparent;
-
-    background-image: -webkit-gradient(
-     linear, 0% 0%, 100% 0%,
-     from(rgba(47,108,207,.0)),
-     color-stop(10%, rgba(47,108,207,.75)),
-     color-stop(50%, rgba(47,108,207,.85)),
-     color-stop(90%, rgba(47,108,207,.75)),
-     to(rgba(47,108,207,.0)));
-    text-shadow: #444 0px -1px 1px;
-
 }
