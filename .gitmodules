@@ -1,3 +1,0 @@
-[submodule "gojs"]
-	path = gojs
-	url = git@github.com:citizenlogistics/go.js.git
