@@ -12,7 +12,7 @@ BUILD/base.js: BUILD ../gojs/go.js js/base.js
 	cat ../gojs/go.js js/base.js > BUILD/base.js
 
 BUILD/super.js: BUILD ../gojs/*.js js/base.js
-	cat ../gojs/*.js js/base.js > BUILD/super.js
+	cat ../gojs/*.js gcjs/*.js js/*.js > BUILD/super.js
 
 BUILD:
 	mkdir -p BUILD
