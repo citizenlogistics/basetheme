@@ -103,9 +103,9 @@ go.push({
   },
 
   // data //
-  viewer_url: function() { return 'http://groundcrew.us/'+current_stream; },
-  invite_url: function() { return 'http://groundcrew.us/'+current_stream+'/signup'; },
-  join_url: function() { return 'http://groundcrew.us/'+current_stream+'/join'; }
+  viewer_url: function() { return '/'+current_stream; },
+  invite_url: function() { return '/'+current_stream+'/signup'; },
+  join_url: function() { return '/'+current_stream+'/join'; }
 });
 
 This.user = { tag: 'pAnon'};
