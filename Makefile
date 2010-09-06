@@ -3,13 +3,16 @@ test: css js
 
 css: BUILD/base.css
 
-js: BUILD/base.js
+js: BUILD/base.js BUILD/super.js
 
 BUILD/base.css: BUILD css/*.css
 	cat css/*.css > BUILD/base.css
 
 BUILD/base.js: BUILD ../gojs/go.js js/base.js
 	cat ../gojs/go.js js/base.js > BUILD/base.js
+
+BUILD/super.js: BUILD ../gojs/*.js js/base.js
+	cat ../gojs/*.js js/base.js > BUILD/super.js
 
 BUILD:
 	mkdir -p BUILD
