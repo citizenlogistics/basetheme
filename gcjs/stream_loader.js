@@ -6,7 +6,6 @@ function sms_count(sent, received, limit){
   GCLibClient.sms_count(sent, received, limit);
 };
 
-// TODO(twit): remove demo references
 StreamLoader = {
   interval: 6 * 1000,
   timer: null,
@@ -25,14 +24,10 @@ StreamLoader = {
       }
     });
 
-    Resource.handle_changes = true;
-
-    if (demo) return;
     StreamLoader.autoload();
   },
 
   schedule_autoload: function(interval){
-    if (demo) return;
     if (StreamLoader.timer) clearTimeout(StreamLoader.timer);
     StreamLoader.timer = setTimeout(function(){StreamLoader.autoload();}, interval || StreamLoader.interval);
   },
@@ -46,7 +41,6 @@ StreamLoader = {
   },
 
   autoload: function(callback){
-    if (demo) return;
     var uri = stream_url;
     if (atevent) uri += '&since=' + atevent;
     if (This.city_id) {
@@ -58,7 +52,6 @@ StreamLoader = {
   },
 
   fetch: function(url, options, after){
-    if (demo) return;
     $.getJSON(url, options, function(obj){
       if (obj.error){ alert("Note: " + obj.error); return; }
       if (after) after(obj);
