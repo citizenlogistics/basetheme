@@ -20,7 +20,7 @@ function item(city, tag, title, thumb_url, lat, lng, atags, latch, comm, req, x)
     lat = Number(lat) + fuzzfactor[tag][0];
     lng = Number(lng) + fuzzfactor[tag][1];
   }
-  var via_sys = Agents.common_sys(comm);
+  var via_sys = (comm && comm.split(/ /)[3] || '');
   return most_recent_item = Resource.add_or_update(tag, {
     city_id: city,
     title: title,
