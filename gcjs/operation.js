@@ -22,6 +22,7 @@ function operation(city, uuid, name, vtype, thumb_url, lat, lng, loc, focii, not
     title: name,
     focii: focii,
     architect: authority_id,
+    architect_name: authority_name,
     atype: "assignment " + vtype,
     body: name,
     created_ts: created_ts,
