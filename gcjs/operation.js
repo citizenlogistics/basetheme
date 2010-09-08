@@ -52,5 +52,6 @@ Ops = new Resource('Op', {
     if (!op_children[x.id]) op_children[x.id] = [];
     x.site = x.site || (x.focii && x.focii.split(' ')[0]);
     x.thumb_url = x.thumb_url || (x.site && x.site.resource() && x.site.resource().thumb_url);
+    if (GCLibClient.op_enhanced) GCLibClient.op_enhanced(x);
   }
 });
