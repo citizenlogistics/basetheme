@@ -3,7 +3,7 @@ var op_children = {};
 var op_last_child = {};
 
 function operation(city, uuid, name, vtype, thumb_url, lat, lng, loc, focii, notes, 
-  authority_id, authority_name, created_ts, x, stream_id)
+  authority_id, authority_name, created_ts, x, stream_id, type)
 {
   focii = focii && focii.replace(/Person__/g, '').replace(/Landmark__/g, '');
   authority_id = authority_id && authority_id.replace('Person__', '');
@@ -26,7 +26,8 @@ function operation(city, uuid, name, vtype, thumb_url, lat, lng, loc, focii, not
     atype: "assignment " + vtype,
     body: name,
     created_ts: created_ts,
-    stream_id: stream_id
+    stream_id: stream_id,
+    type: type
   }, x);
   return most_recent_op;
 }
