@@ -1,6 +1,6 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 em {
@@ -17,8 +17,6 @@ input.prompting, textarea.prompting {
   color: #D8D8D8;
   color: #bbb;
 }
-
-p { margin: 0 0 1em 0; }
 
 .spacebelow {
   margin-bottom: 10px;
