@@ -92,6 +92,7 @@ Event = {
     ev.color = Event.color(ev);
     ev.item = ev.item || (ev.item_tag && ev.item_tag.resource());
     ev.item_title = ev.item_title || ev.item && ev.item.title;
+    ev.item_thumb_url = ev.item && ev.item.thumb_url;
     ev.landmark = ev.landmark_tag && ev.landmark_tag.resource();
     ev.landmark_title = ev.landmark && ev.landmark.title;
     if (ev.re) {
