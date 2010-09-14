@@ -110,6 +110,10 @@ body#page #tools > div {
 /* =========================== */
 /* = modals                  = */
 /* =========================== */
+
+.hidden_unless_active { display: none; }
+.hidden_unless_active.active { display: block; }
+
 .modal {
   color: #474848;
   background: #C2C2C2;
