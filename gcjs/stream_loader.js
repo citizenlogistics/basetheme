@@ -41,7 +41,7 @@ StreamLoader = {
   },
 
   autoload: function(callback){
-    var uri = stream_url;
+    var uri = StreamLoader.stream_url;
     if (atevent) uri += '&since=' + atevent;
     if (This.city_id) {
       uri += '&city=' + This.city_id;
