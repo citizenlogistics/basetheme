@@ -108,6 +108,7 @@ Event = {
     }
     ev.actor_title = ev.actor_title || (ev.actor && ev.actor.title) ||
                      ev.actor_name  || ev.item_title || 'UnknownUser';
+    ev.actor_thumb_url = ev.actor && ev.actor.thumb_url;
 
     ev.what = (Event.whats[ev.atype] || "#{atype}").t(ev);
     return ev;
