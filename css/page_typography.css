@@ -13,8 +13,6 @@ big {
 }
 
 input.prompting, textarea.prompting {
-  font-style:italic;
-  color: #D8D8D8;
   color: #bbb;
 }
 

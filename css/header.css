@@ -73,6 +73,7 @@ a.m_item:hover {
 
 
 #header { width: 100%; height: 30px; text-align: center; }
+#header a {color: #fff;}
 #header_sidebar { width: 280px; text-align: center; height: 30px; }
 .collapsed #header_sidebar { width: auto; }
 #header_sidebar h1 { position: absolute; }
@@ -84,7 +85,10 @@ a.m_item:hover {
 #soc_logins {
     margin-top: 6px;
     margin-right: 10px;
+    color: #ccc
 }
+
+#soc_logins a {color: #ccc;}
 
 #header h1 {
     z-index: 2;
