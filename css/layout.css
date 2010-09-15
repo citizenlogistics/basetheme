@@ -54,11 +54,11 @@ body#page #tools > div {
 #content {margin:0 auto; width: 950px;}
 #main_column {width:600px; float: left; background: #E9E9E9;}
 
-#main_column #notification {background: #FFFDDA; padding: 15px 20px;}
-#main_column #notification img {height: 32px; width: 32px; background: #777; float: left; margin-right: 10px;}
-#main_column #notification p {margin-bottom: 0; font-weight: bold;}
-#main_column #notification p.details {color: #999; margin-bottom: 0; font-weight: normal;}
-#main_column #notification div {float: left;}
+#sys_confirmation {background: #FFFDDA; padding: 15px 20px;}
+#sys_confirmation img {height: 32px; width: 32px; background: #777; float: left; margin-right: 10px;}
+#sys_confirmation p {margin-bottom: 0; font-weight: bold;}
+#sys_confirmation p.details {color: #999; margin-bottom: 0; font-weight: normal;}
+#sys_confirmation div {float: left;}
 
 #directive {background: white; padding: 20px 20px; border-bottom: 1px solid #CACACA;}
 #directive h2 {font-size: 22px;}
