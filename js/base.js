@@ -11,27 +11,29 @@ function watch_location(){
   });
 }
 
-
-go.push({
-  facebook_ready: function() {
-    This.facebook_ready = true;
-    // TODO: check for twitter below too
-    if (This.facebook_ready) go.trigger('social_logins_ready');
-  },
   
-  social_logins_ready: function() {
-    // get tokens from server if necessary
-    if (This.facebook_uid && !window.authority) return go('#fetch_login_token_from_facebook');
-    
-    // otherwise user ready
+go.push({
+  complete_auth_from_cookie: function(){
+    var user = $.cookie('gcuser');
+    if (user) $.extend(window, eval('(' + user + ')'));
+    go('#auth_complete');
+  },
+
+  auth_complete: function() {
+    This.user = This.user || {};
+    $.extend(This.user, {
+      tag: window.authority || 'pAnon', title: window.user_name, posx: 38, logged_in: true
+    });
+    This.user.atags = This.user.atags || '';
+
     go.trigger('will_user_ready');
     go.dispatch('user_ready') || go('#user_ready_default');
     go.trigger('did_user_ready');
   },
   
   will_user_ready: function() {
-    if (window.authority) $('body').addClass( 'logged_in' );
-    else $('body').addClass( 'logged_out' );
+    $('body').toggleClass('logged_in',  window.authority != null);
+    $('body').toggleClass('logged_out', window.authority == null);
   },
   
   did_user_ready: function() {
@@ -39,19 +41,30 @@ go.push({
   },
   
   user_ready_default: function() {
-    if (window.authority) go.dispatch('user_ready_logged_in') || go('#user_ready_logged_in_default');
-    else go.dispatch('user_ready_logged_out') || go('#redirect("/login")');
+    if (window.authority) {
+      go.dispatch('user_ready_logged_in')  || go('#user_ready_logged_in_default');
+    }
+    else {
+      go.dispatch('user_ready_logged_out') || go('#redirect("/login")');
+    }
   },
   
   user_ready_logged_in_default: function() {
     watch_location();
     go('tool=start');
   },
-  
-  
-  facebook_login: go.f('#fetch_login_token_from_facebook'),
-  
-  fetch_login_token_from_facebook: function() {
+
+  // We've heard back from facebook
+  facebook_ready: function() {
+    This.facebook_ready = true;
+    // TODO: repaint some stuff?
+  },
+
+  // User logged into FB from a Groundcrew page
+  facebook_login: go.f('#facebook_auth_in_gx'),
+
+  // User account from FB needs to be synced with account in GX
+  facebook_auth_in_gx: function() {
     $.post('/api/me/contact_methods', {'url': 'facebook:' + This.facebook_uid}, function(){
       var user = $.cookie('gcuser');
       if (user) $.extend(window, eval('(' + user + ')'));
@@ -59,15 +72,15 @@ go.push({
       else go.dispatch('login') || window.location.reload();
     });
   },
-  
-  report_error: function() {
-    $.post('/api/bugreport', {issue: This.bugreport}, go.f('#notify_error'));
-  },
-  
+
   facebook_logout: function(){ 
     go('#redirect("/api/logout")');
   },
-  
+
+  report_error: function() {
+    $.post('/api/bugreport', {issue: This.bugreport}, go.f('#notify_error'));
+  },
+
   redirect: function(url) {
     window.location.href = url;
   },
