@@ -2,7 +2,7 @@ var user = $.cookie('gcuser');
 if (user) $.extend(window, eval('(' + user + ')'));
 
 function watch_location(){
-  navigator.geolocation && navigator.geolocation.watchPosition(function(position) {
+  return navigator.geolocation && navigator.geolocation.watchPosition(function(position) {
     var loc = position.coords.latitude + "," + position.coords.longitude;
     $.get('/api/checkin', { lat: position.coords.latitude, lng: position.coords.longitude });
   });
