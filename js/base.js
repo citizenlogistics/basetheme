@@ -77,6 +77,12 @@ go.push({
     go('#redirect("/api/logout")');
   },
 
+  twitter_login: function() {
+    var url = '/api/tconnect?go=' + window.location.href;
+    if (window.current_stream) url += '&stream=' + window.current_stream;
+    window.location.href = url;
+  },
+
   report_error: function() {
     $.post('/api/bugreport', {issue: This.bugreport}, go.f('#notify_error'));
   },
