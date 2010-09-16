@@ -1,9 +1,12 @@
 var most_recent_item = null;
 var fuzzfactor = {};
+var seen = {};
 
-function make_fuzzfactor(){
-  var xfuzz = Math.random() * 0.05 - 0.025;
-  var yfuzz = Math.random() * 0.05 - 0.025;
+function make_fuzzfactor(acc){
+  var factor = 0.005;
+  if (acc == 'zip' || acc == 'city') factor = 0.05;
+  var xfuzz = Math.random() * factor - factor/2.0;
+  var yfuzz = Math.random() * factor - factor/2.0;
   return [xfuzz, yfuzz];
 }
 
@@ -15,11 +18,18 @@ function item(city, tag, title, thumb_url, lat, lng, atags, latch, comm, req, x)
   if (!lat || !lng || lat == 0 || lng == 0) return null;
 
   // spread out items that are geocoded to a single common city/zip point
-  if (x && (x.acc == 'zip' || x.acc == 'city') && lat && lng) {
-    if (!fuzzfactor[tag]) fuzzfactor[tag] = make_fuzzfactor();
+  var pos = lat+","+lng;
+  if (seen[pos]){
+    if (!fuzzfactor[tag]) fuzzfactor[tag] = make_fuzzfactor(x.acc);
     lat = Number(lat) + fuzzfactor[tag][0];
     lng = Number(lng) + fuzzfactor[tag][1];
-  }
+  } else seen[pos] = true;
+  
+  // if (x && (x.acc == 'zip' || x.acc == 'city') && lat && lng) {
+  //   if (!fuzzfactor[tag]) fuzzfactor[tag] = make_fuzzfactor();
+  //   lat = Number(lat) + fuzzfactor[tag][0];
+  //   lng = Number(lng) + fuzzfactor[tag][1];
+  // }
   var via_sys = (comm && comm.split(/ /)[3] || '');
   return most_recent_item = Resource.add_or_update(tag, {
     city_id: city,

@@ -1,0 +1,22 @@
+<div class="modal modal_wide signup_details_tool hidden_unless_active clearfix">
+  <img src="i/buttons/close.gif" href="#tool=" class="closebox" />
+  <h2>Tell Groundcrew about yourself</h2>
+  <form id="signup_details_form" class="form_fields">
+
+    <div if="req_user_mobile">
+      <h3>Mobile Number</h3>
+      <input type="text" name="m_sysid" />
+    </div>
+
+    <h3>What do you look like?  Upload a photo.</h3>
+    <img if="user_thumb" fill="user_thumb src" src=""/>
+    <input type="file" name="avatar" id="avatar" />
+
+    <h3>Location</h3>
+    <input type="text" name="loc" fill="user_loc value" />
+    <!-- TODO: show clickable map -->
+
+    <button type="submit">Done</button><br />
+
+  </form>
+</div>
