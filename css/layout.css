@@ -27,6 +27,7 @@ p {margin: 0 0 .5em 0;}
 a {color: #0066CC; text-decoration: none;}
 textarea {width: 95%; height: auto; font-family: inherit; font-size: 92%;}
 hr {height: 1px; background-color: #ccc; color: #ccc; border: none; padding: 0;margin: .6em 0;}
+ul, ol {margin-left: 1em; padding-left: 0;}
 
 
 /* =========================== */
@@ -47,11 +48,13 @@ body#page #tools > div {
 }
 
 #page h1 {font-weight: bold; color: #fff;}
-#page h2, #page h3, #page h4 {font-weight: bold; color: #333;}
+#page h2, #page h3, #page h4 {color: #333;}
 
 
 
 #content {margin:0 auto; width: 950px;}
+.single_column {margin: 0 auto; width:550px;}
+
 #main_column {width:600px; float: left; background: #E9E9E9;}
 
 #main_column #notification {background: #FFFDDA; padding: 15px 20px;}
@@ -61,7 +64,7 @@ body#page #tools > div {
 #main_column #notification div {float: left;}
 
 #directive {background: white; padding: 20px 20px; border-bottom: 1px solid #CACACA;}
-#directive h2 {font-size: 22px;}
+#directive h2 {font-size: 22px; font-weight: bold;}
 #directive h4 {font-size: 14px; font-weight: normal; color: #999; margin: 5px 0 3px;}
 #directive .op {margin: 0 0 15px;}
 #directive #organizer_thumb {float: left; height: 72px; width: 72px;}
@@ -70,9 +73,9 @@ body#page #tools > div {
 #directive textarea {width: 98%; height: auto;}
 #directive h3.thanks {font-size: 22px; margin: 15px 0 0 0;}
 
-#comments {padding: 20px 20px; color: #474848;}
+#comments {padding: 20px 20px; color: #474848; background-color: #E9E9E9;}
 #comments p {margin: 0 0 .3em 0;}
-#comments h2 {font-size: 18px; text-shadow: 0px 1px 0px #fff; margin-bottom: 10px;}
+#comments h2 {font-size: 18px; font-weight: bold; text-shadow: 0px 1px 0px #fff; margin-bottom: 10px;}
 #comments .date, #sidebar .date {color: #999999;}
 #comments .event {margin: 0 0 10px; clear: both;}
 #comments .commenter_thumb {height: 48px; width: 48px; margin-right: 15px; background-color: #333; float: left;}
@@ -88,6 +91,17 @@ body#page #tools > div {
 #content #sidebar #recent_messages .author {font-weight: bold;}
 #content #sidebar #recent_messages hr {margin: 5px 0 0 0;}
 
+
+/* = for join and login pages = */
+.squad_details {margin: 0 0 20px;}
+.squad_details h2 {margin: 0 0 4px; font-size: 24px; font-weight: bold;}
+.squad_details h4 {font-weight: normal;}
+.squad_details img {float: left; height: 48px; width: 48px; background-color: #bbb; margin-right: 10px;}
+
+.invite_tool {margin: 20px 0;}
+#mobile_form {margin: 20px 0;}
+ul.bullet_list {margin-top: 1em}
+ul.bullet_list li {margin: 0 0 .6em;}
 
 
 #tools > div { display:none; }
