@@ -29,6 +29,8 @@ textarea {width: 95%; height: auto; font-family: inherit; font-size: 92%;}
 hr {height: 1px; background-color: #ccc; color: #ccc; border: none; padding: 0;margin: .6em 0;}
 ul, ol {margin-left: 1em; padding-left: 0;}
 
+.nobold {font-weight: normal;}
+
 
 /* =========================== */
 /* = layout for static pages = */
@@ -102,6 +104,12 @@ body#page #tools > div {
 #mobile_form {margin: 20px 0;}
 ul.bullet_list {margin-top: 1em}
 ul.bullet_list li {margin: 0 0 .6em;}
+
+/* = create sqaud page = */
+.create_squad label {display: block;}
+
+
+
 
 
 #tools > div { display:none; }
