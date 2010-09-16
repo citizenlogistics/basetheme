@@ -162,7 +162,7 @@ ul.bullet_list li {margin: 0 0 .6em;}
 }
 
 .modal_wide {
-  width: 350px;
+  width: 400px;
 }
 
 .modal_narrow {
@@ -177,7 +177,7 @@ ul.bullet_list li {margin: 0 0 .6em;}
 
 .modal .sidebar {
   float: left;
-  width: 110px;
+  width: 160px;
   padding: 10px 0 0 10px;
 }
 
