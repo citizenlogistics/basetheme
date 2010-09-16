@@ -3,8 +3,11 @@ if (user) $.extend(window, eval('(' + user + ')'));
 
 function watch_location(){
   return navigator.geolocation && navigator.geolocation.watchPosition(function(position) {
-    var loc = position.coords.latitude + "," + position.coords.longitude;
-    $.get('/api/checkin', { lat: position.coords.latitude, lng: position.coords.longitude });
+    $.get('/api/checkin', {
+      no_poll: true, // don't pull down messages, since there's no message handler here
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    });
   });
 }
 
