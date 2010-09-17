@@ -11,13 +11,13 @@ function watch_location(){
   });
 }
 
-function valid_email(email) {
-  var email_regex = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
-  return email_regex.test(email);
-};
 
-  
 go.push({
+  email_regex: function() {
+    return new RegExp(/^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/);
+  },
+  password_regex: function() { return new RegExp(/[^\s]{5,}/); },
+
   complete_auth_from_cookie: function(){
     var user = $.cookie('gcuser');
     if (user) $.extend(window, eval('(' + user + ')'));

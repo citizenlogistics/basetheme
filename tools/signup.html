@@ -1,16 +1,16 @@
 <div class="modal modal_wide signup_tool hidden_unless_active clearfix">
   <img src="i/buttons/close.gif" href="#tool=" class="closebox" />
   <h2>Sign up for Groundcrew</h2>
-  <form id="signup_form" class="form_fields">
+  <form id="signup_form" class="form_fields magic">
 
     <h3>Full Name</h3>
-    <input type="text" name="name" />
+    <input type="text" name="name" required="true" />
 
     <h3>Email Address</h3>
-    <input type="text" name="e_sysid" id="e_sysid" />
+    <input type="text" name="e_sysid" id="e_sysid" title="email" required="true" fill="email_regex pattern" />
 
     <h3>Create a password</h3>
-    <input type="password" name="password" maxlength="40" />
+    <input type="password" name="password" required="true" fill="password_regex pattern" />
 
     <button type="submit">Create an account</button><br />
     <a href="#tool=login">I already have an account</a>
