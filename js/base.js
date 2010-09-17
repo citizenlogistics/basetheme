@@ -11,6 +11,11 @@ function watch_location(){
   });
 }
 
+function valid_email(email) {
+  var email_regex = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+  return email_regex.test(email);
+};
+
   
 go.push({
   complete_auth_from_cookie: function(){
@@ -118,7 +123,6 @@ go.push({
     $.post('/api/me', {'password': This.form_data.pw}, go.f('tool=iphone'));
   },
 
-  
   // roles & auth
   stream_role_organizer: function() {
     return window.stream_role == 'leader' || window.stream_role == 'organizer';
