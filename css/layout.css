@@ -3,6 +3,7 @@ body.loading .hide_until_loaded { display: none; }
 html { overflow: hidden; min-height: 100%; margin: 0; line-height: 1.1;}
 
 body {
+    color: #333;
     margin: 0;
     background-color: #ccc;
     background-image: -webkit-gradient(
@@ -25,9 +26,15 @@ body {
 h1, h2, h3, h4, h5, h6 {line-height: 1.1;}
 p {margin: 0 0 .5em 0;}
 a {color: #0066CC; text-decoration: none;}
-textarea {width: 95%; height: auto; font-family: inherit; font-size: 92%;}
-hr {height: 1px; background-color: #ccc; color: #ccc; border: none; padding: 0;margin: .6em 0;}
+hr {height: 1px; background-color: #E9EAEC; color: #E9EAEC; border: none; padding: 0;margin: 1em 0;}
 ul, ol {margin-left: 1em; padding-left: 0;}
+
+input[type="text"], input[type="password"], input[type="tel"], input.text, input.title, textarea {font-size: 100%; font-family: inherit; margin: 2px 3px 15px 0; padding: 3px;}
+textarea {width: 95%; height: auto;}
+
+
+.nobold {font-weight: normal;}
+
 
 
 /* =========================== */
@@ -46,63 +53,6 @@ body#page #tools > div {
     margin-left: auto;
     margin-right: auto;
 }
-
-#page h1 {font-weight: bold; color: #fff;}
-#page h2, #page h3, #page h4 {color: #333;}
-
-
-
-#content {margin:0 auto; width: 950px;}
-.single_column {margin: 0 auto; width:550px;}
-
-#main_column {width:600px; float: left; background: #E9E9E9;}
-
-#sys_confirmation {background: #FFFDDA; padding: 15px 20px;}
-#sys_confirmation img {height: 32px; width: 32px; background: #777; float: left; margin-right: 10px;}
-#sys_confirmation p {margin-bottom: 0; font-weight: bold;}
-#sys_confirmation p.details {color: #999; margin-bottom: 0; font-weight: normal;}
-#sys_confirmation div {float: left;}
-
-#directive {background: white; padding: 20px 20px; border-bottom: 1px solid #CACACA;}
-#directive h2 {font-size: 22px; font-weight: bold;}
-#directive h4 {font-size: 14px; font-weight: normal; color: #999; margin: 5px 0 3px;}
-#directive .op {margin: 0 0 15px;}
-#directive #organizer_thumb {float: left; height: 72px; width: 72px;}
-#directive #directive_col {float: left; width: 400px;}
-#directive #organizer_thumb {margin-right: 15px;}
-#directive textarea {width: 98%; height: auto;}
-#directive h3.thanks {font-size: 22px; margin: 15px 0 0 0;}
-
-#comments {padding: 20px 20px; color: #474848; background-color: #E9E9E9;}
-#comments p {margin: 0 0 .3em 0;}
-#comments h2 {font-size: 18px; font-weight: bold; text-shadow: 0px 1px 0px #fff; margin-bottom: 10px;}
-#comments .date, #sidebar .date {color: #999999;}
-#comments .event {margin: 0 0 10px; clear: both;}
-#comments .commenter_thumb {height: 48px; width: 48px; margin-right: 15px; background-color: #333; float: left;}
-#comments .comment div {float: left;}
-
-#content #sidebar {width: 190px; float: left; margin: 15px 0 0 15px;}
-#content #sidebar h2 {font-size: 18px; text-shadow: 0px 1px 0px #fff;}
-#content #sidebar .box {background: #E9E9E9; padding: 10px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
-#content #sidebar textarea {width: 92%; height: auto;}
-#content #sidebar #recent_messages p {margin: 0;}
-#content #sidebar #recent_messages .comment {overflow-y: auto; max-height: 200px; padding: 5px 0;}
-#content #sidebar #recent_messages .pm {margin: 0 0 10px 0;}
-#content #sidebar #recent_messages .author {font-weight: bold;}
-#content #sidebar #recent_messages hr {margin: 5px 0 0 0;}
-
-
-/* = for join and login pages = */
-.squad_details {margin: 0 0 20px;}
-.squad_details h2 {margin: 0 0 4px; font-size: 24px; font-weight: bold;}
-.squad_details h4 {font-weight: normal;}
-.squad_details img {float: left; height: 48px; width: 48px; background-color: #bbb; margin-right: 10px;}
-
-.invite_tool {margin: 20px 0;}
-#mobile_form {margin: 20px 0;}
-ul.bullet_list {margin-top: 1em}
-ul.bullet_list li {margin: 0 0 .6em;}
-
 
 #tools > div { display:none; }
 #tools > div.active { display: block; }
@@ -132,6 +82,89 @@ ul.bullet_list li {margin: 0 0 .6em;}
     padding-right: 10px;
 }
 
+
+
+
+#page h1 {font-weight: bold; color: #fff;}
+#page h2, #page h3, #page h4 {color: #333;}
+
+#content {margin:0 auto; width: 950px;}
+.single_column {margin: 0 auto; width:550px;}
+
+#main_column {width:600px; float: left; background: #E9E9E9;}
+
+#sys_confirmation {background: #FFFDDA; padding: 15px 20px;}
+#sys_confirmation img {height: 32px; width: 32px; background: #777; float: left; margin-right: 10px;}
+#sys_confirmation p {margin-bottom: 0; font-weight: bold;}
+#sys_confirmation p.details {color: #999; margin-bottom: 0; font-weight: normal;}
+#sys_confirmation div {float: left;}
+
+#directive {background: white; padding: 20px 20px; border-bottom: 1px solid #CACACA;}
+#directive h2 {font-size: 24px; font-weight: bold;}
+#directive h3 {font-size: 18px; font-weight: bold;}
+#directive h4 {font-size: 14px; font-weight: normal; color: #999; margin: 5px 0 3px;}
+#directive h2 img, #directive h3 img, #directive h4 img {margin: 0 4px -3px 0;}
+
+#directive .op {margin: 0 0 15px;}
+#directive #organizer_thumb {float: left; height: 72px; width: 72px;}
+#directive #directive_col {float: left; width: 400px;}
+#directive #organizer_thumb {margin-right: 15px;}
+#directive textarea {width: 98%; height: auto;}
+#directive h3.thanks {font-size: 22px; margin: 15px 0 0 0;}
+
+#comments {padding: 20px 20px; color: #474848; background-color: #E9E9E9;}
+#comments p {margin: 0 0 .3em 0;}
+#comments h2 {font-size: 18px; font-weight: bold; text-shadow: 0px 1px 0px #fff; margin-bottom: 10px;}
+#comments .date, #sidebar .date {color: #999999;}
+#comments .event {margin: 0 0 10px; clear: both;}
+#comments .commenter_thumb {height: 48px; width: 48px; margin-right: 15px; background-color: #333; float: left;}
+#comments .comment div {float: left;}
+
+#content #sidebar {width: 190px; float: left; margin: 15px 0 0 15px;}
+#content #sidebar h2 {font-size: 18px; text-shadow: 0px 1px 0px #fff;}
+#content #sidebar .box {background: #E9E9E9; padding: 10px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
+#content #sidebar textarea {width: 92%; height: auto;}
+#content #sidebar #recent_messages p {margin: 0;}
+#content #sidebar #recent_messages .comment {overflow-y: auto; max-height: 200px; padding: 5px 0;}
+#content #sidebar #recent_messages .pm {margin: 0 0 10px 0;}
+#content #sidebar #recent_messages .author {font-weight: bold;}
+#content #sidebar #recent_messages hr {margin: 5px 0 0 0;}
+
+#content .button {
+  color: #fff;
+  text-decoration: none;
+  background: #9D9D9D;
+  font-weight: bold;
+  border: none;
+  padding: 4px 15px;
+  font-size: 16px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  text-shadow: none; 
+  -moz-box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);}
+
+/* = for join and login pages = */
+.squad_details {margin: 0 0 20px;}
+.squad_details h2 {margin: 0 0 4px; font-size: 24px; font-weight: bold;}
+.squad_details h4 {font-weight: normal;}
+.squad_details img {float: left; height: 48px; width: 48px; background-color: #bbb; margin-right: 10px;}
+
+.invite_tool {margin: 20px 0;}
+#mobile_form {margin: 20px 0;}
+ul.bullet_list {margin-top: 1em}
+ul.bullet_list li {margin: 0 0 .6em;}
+
+/* =========================== */
+/* = create squad page       = */
+/* =========================== */
+.create_squad label {display: block; clear: both;}
+.create_squad .descr {color: #999;}
+.create_squad div.descr {width: 150px; float:left;
+line-height:1.2; margin: 2px 0 0 5px;}
+.create_squad #create_form textarea {display: block; width: 290px; float: left;}
+.create_squad #create_form button {display: block; clear: both; margin: 5px 0 10px 0;}
 
 
 /* =========================== */

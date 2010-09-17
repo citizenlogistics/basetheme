@@ -50,13 +50,17 @@ go.push({
       go.dispatch('user_ready_logged_in')  || go('#user_ready_logged_in_default');
     }
     else {
-      go.dispatch('user_ready_logged_out') || go('#redirect("/login")');
+      go.dispatch('user_ready_logged_out');
     }
   },
   
   user_ready_logged_in_default: function() {
     watch_location();
     go('tool=start');
+  },
+
+  logout: function() {
+    FB.logout(go.f('#facebook_logout'));
   },
 
   // We've heard back from facebook
@@ -67,6 +71,7 @@ go.push({
 
   // User logged into FB from a Groundcrew page
   facebook_login: go.f('#facebook_auth_in_gx'),
+  facebook_logout: go.f('#redirect("/api/logout")'),
 
   // User account from FB needs to be synced with account in GX
   facebook_auth_in_gx: function() {
@@ -76,10 +81,6 @@ go.push({
       if (!This.login_after_page_load) window.location.reload();
       else go.dispatch('login') || window.location.reload();
     });
-  },
-
-  facebook_logout: function(){ 
-    go('#redirect("/api/logout")');
   },
 
   twitter_login: function() {
