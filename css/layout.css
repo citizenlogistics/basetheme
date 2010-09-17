@@ -32,6 +32,7 @@ ul, ol {margin-left: 1em; padding-left: 0;}
 .nobold {font-weight: normal;}
 
 
+
 /* =========================== */
 /* = layout for static pages = */
 /* =========================== */
@@ -92,6 +93,19 @@ body#page #tools > div {
 #content #sidebar #recent_messages .pm {margin: 0 0 10px 0;}
 #content #sidebar #recent_messages .author {font-weight: bold;}
 #content #sidebar #recent_messages hr {margin: 5px 0 0 0;}
+
+#content .button {
+  text-decoration: none;
+  background: #9D9D9D;
+  font-weight: bold;
+  padding: 4px 15px;
+  font-size: 16px;
+  border:1px solid #909090;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  text-shadow: #444 0px -1px 1px; }
+
 
 
 /* = for join and login pages = */
