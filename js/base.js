@@ -113,15 +113,8 @@ go.push({
   },
   
   add_self: function() {
-    $.post('/api/'+current_stream+'/members', go.f('#added_self_to_stream'));
+    $.post('/api/'+current_stream+'/members', go.f('#self_added'));
   },
-  
-  added_self_to_stream: function() {
-    if (window.user_mobile) go('#self_added_need_mobile');
-    else go('#self_added');
-  },
-  
-  self_added_mobile_needed: go.f('tool=get_mobile'),
   
   pw_form_submitted: function() {
     $.post('/api/me', {'password': This.form_data.pw}, go.f('tool=iphone'));
