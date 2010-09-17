@@ -25,6 +25,8 @@ go.push({
   },
 
   auth_complete: function() {
+    // The contents of This.user is deprecated.  It should be replaced 
+    // with the contents of the gcuser cookie, or maybe the user item.
     This.user = This.user || {};
     $.extend(This.user, {
       tag: window.authority || 'pAnon', title: window.user_name, posx: 38, logged_in: true
