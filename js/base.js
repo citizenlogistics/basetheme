@@ -37,7 +37,7 @@ go.push({
   
   user_ready_default: function() {
     if (window.authority) go.dispatch('user_ready_logged_in') || go('#user_ready_logged_in_default');
-    else go.dispatch('user_ready_logged_out') || go('#redirect("/login")');
+    else go.dispatch('user_ready_logged_out');
   },
   
   user_ready_logged_in_default: function() {
