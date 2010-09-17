@@ -46,7 +46,8 @@ go.push({
   },
   
   
-  facebook_login: go.f('#fetch_login_token_from_facebook'),
+  facebook_login:  go.f('#fetch_login_token_from_facebook'),
+  facebook_logout: go.f('#redirect("/api/logout")'),
   
   fetch_login_token_from_facebook: function() {
     $.post('/api/me/contact_methods', {'url': 'facebook:' + This.facebook_uid}, function(){
@@ -60,9 +61,9 @@ go.push({
   report_error: function() {
     $.post('/api/bugreport', {issue: This.bugreport}, go.f('#notify_error'));
   },
-  
-  facebook_logout: function(){ 
-    go('#redirect("/api/logout")');
+
+  logout: function() {
+    FB.logout(go.f('#facebook_logout'));
   },
   
   redirect: function(url) {
