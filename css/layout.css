@@ -3,6 +3,7 @@ body.loading .hide_until_loaded { display: none; }
 html { overflow: hidden; min-height: 100%; margin: 0; line-height: 1.1;}
 
 body {
+    color: #333;
     margin: 0;
     background-color: #ccc;
     background-image: -webkit-gradient(
@@ -25,9 +26,12 @@ body {
 h1, h2, h3, h4, h5, h6 {line-height: 1.1;}
 p {margin: 0 0 .5em 0;}
 a {color: #0066CC; text-decoration: none;}
-textarea {width: 95%; height: auto; font-family: inherit; font-size: 92%;}
-hr {height: 1px; background-color: #ccc; color: #ccc; border: none; padding: 0;margin: .6em 0;}
+hr {height: 1px; background-color: #E9EAEC; color: #E9EAEC; border: none; padding: 0;margin: 1em 0;}
 ul, ol {margin-left: 1em; padding-left: 0;}
+
+input[type="text"], input[type="password"], input[type="tel"], input.text, input.title, textarea {font-size: 100%; font-family: inherit; margin: 2px 3px 15px 0; padding: 3px;}
+textarea {width: 95%; height: auto;}
+
 
 .nobold {font-weight: normal;}
 
@@ -50,10 +54,39 @@ body#page #tools > div {
     margin-right: auto;
 }
 
+#tools > div { display:none; }
+#tools > div.active { display: block; }
+
+#footer {
+	clear:both;
+    text-align: center;
+    color: #666;
+    z-index: 3;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer a { color: #0066CC; }
+
+#tools > div.active.bigwhite {
+    text-align: center;
+    padding-top: 30px;
+    font-size: 28px;
+}
+
+.ios #tools > div.active.bigwhite {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+
+
 #page h1 {font-weight: bold; color: #fff;}
 #page h2, #page h3, #page h4 {color: #333;}
-
-
 
 #content {margin:0 auto; width: 950px;}
 .single_column {margin: 0 auto; width:550px;}
@@ -67,8 +100,11 @@ body#page #tools > div {
 #sys_confirmation div {float: left;}
 
 #directive {background: white; padding: 20px 20px; border-bottom: 1px solid #CACACA;}
-#directive h2 {font-size: 22px; font-weight: bold;}
+#directive h2 {font-size: 24px; font-weight: bold;}
+#directive h3 {font-size: 18px; font-weight: bold;}
 #directive h4 {font-size: 14px; font-weight: normal; color: #999; margin: 5px 0 3px;}
+#directive h2 img, #directive h3 img, #directive h4 img {margin: 0 4px -3px 0;}
+
 #directive .op {margin: 0 0 15px;}
 #directive #organizer_thumb {float: left; height: 72px; width: 72px;}
 #directive #directive_col {float: left; width: 400px;}
@@ -120,41 +156,15 @@ body#page #tools > div {
 ul.bullet_list {margin-top: 1em}
 ul.bullet_list li {margin: 0 0 .6em;}
 
-/* = create sqaud page = */
-.create_squad label {display: block;}
-
-
-
-
-
-#tools > div { display:none; }
-#tools > div.active { display: block; }
-
-#footer {
-	clear:both;
-    text-align: center;
-    color: #666;
-    z-index: 3;
-    bottom: 0;
-    width: 100%;
-}
-
-#footer a { color: #0066CC; }
-
-#tools > div.active.bigwhite {
-    text-align: center;
-    padding-top: 30px;
-    font-size: 28px;
-}
-
-.ios #tools > div.active.bigwhite {
-    text-align: center;
-    padding-top: 20px;
-    font-size: 16px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
+/* =========================== */
+/* = create squad page       = */
+/* =========================== */
+.create_squad label {display: block; clear: both;}
+.create_squad .descr {color: #999;}
+.create_squad div.descr {width: 150px; float:left;
+line-height:1.2; margin: 2px 0 0 5px;}
+.create_squad #create_form textarea {display: block; width: 290px; float: left;}
+.create_squad #create_form button {display: block; clear: both; margin: 5px 0 10px 0;}
 
 
 /* =========================== */
