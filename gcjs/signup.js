@@ -23,8 +23,12 @@ Signup = {
     // TODO: handle error
     return $.post('/api/agents/update', data, function() {
       go('#complete_auth_from_cookie');
-      go('tool=');
+      go.dispatch('signup_complete') || go('#signup_complete_default');
     });
+  },
+
+  signup_complete_default: function() {
+    go('tool=');
   }
 };
 
