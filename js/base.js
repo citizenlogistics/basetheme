@@ -60,7 +60,8 @@ go.push({
   },
 
   logout: function() {
-    FB.logout(go.f('#facebook_logout'));
+    if (This.facebook_uid) FB.logout(go.f('#facebook_logout'));
+    else go('#redirect("/api/logout")');
   },
 
   // We've heard back from facebook
