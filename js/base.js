@@ -17,7 +17,9 @@ go.push({
     return new RegExp(/^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/);
   },
   password_regex: function() { return new RegExp(/[^\s]{5,}/); },
-
+  
+  start: go.f('#complete_auth_from_cookie'),
+  
   complete_auth_from_cookie: function(){
     var user = $.cookie('gcuser');
     if (user) $.extend(window, eval('(' + user + ')'));
@@ -54,11 +56,11 @@ go.push({
     else {
       go.dispatch('user_ready_logged_out');
     }
+    go('tool=start');
   },
   
   user_ready_logged_in_default: function() {
     watch_location();
-    go('tool=start');
   },
 
   logout: function() {
