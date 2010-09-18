@@ -110,17 +110,26 @@ go.push({
   
   // signup specific
   
-  mobile_form_submitted: function(){
-    $.post(
-      '/api/me/verifications', {
+  verify_mobile: function(){
+    $.post('/api/me/verifications', {
         'url': 'tel:' + This.form_data.mobile,
         'stream': current_stream
-      }, go.f('#self_added')
-    );
+      }, go.onwards );
   },
   
   add_self: function() {
-    $.post('/api/'+current_stream+'/members', go.f('#self_added'));
+    $.post('/api/'+current_stream+'/members', go.onwards);
+  },
+  
+  redirect_squad_page: function(page) {
+    go('#redirect("/'+current_stream + page +'")');
+  },
+  
+  invent_squad: function() {
+    $.post('/api/me/squads', This.form_data, function(sid){
+      window.current_stream = sid;
+      go.onwards();
+    });
   },
   
   pw_form_submitted: function() {
