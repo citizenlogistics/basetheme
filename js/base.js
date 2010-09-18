@@ -71,6 +71,7 @@ go.push({
   // We've heard back from facebook
   facebook_ready: function() {
     This.facebook_ready = true;
+    if (This.facebook_uid && !window.authority) go('#facebook_auth_in_gx');
     // TODO: repaint some stuff?
   },
 
