@@ -82,7 +82,7 @@ body#page #header { height: 30px; }
 #page h2, #page h3, #page h4 {color: #333;}
 
 #content {margin:0 auto; width: 950px;}
-.single_column {margin: 0 auto; width:550px;}
+.single_column {margin: 0 auto; width:550px; border-top: solid 2px black; }
 
 #main_column {width:600px; float: left; background: #E9E9E9;}
 
@@ -134,7 +134,7 @@ body#page #header { height: 30px; }
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  text-shadow: none; 
+  text-shadow: none;
   -moz-box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
   box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);}
 
@@ -156,8 +156,8 @@ ul.bullet_list li {margin: 0 0 .6em;}
 .create_squad .descr {color: #999;}
 .create_squad div.descr {width: 150px; float:left;
 line-height:1.2; margin: 2px 0 0 5px;}
-.create_squad #create_form textarea {display: block; width: 290px; float: left;}
-.create_squad #create_form button {display: block; clear: both; margin: 5px 0 10px 0;}
+.create_squad #create_squad textarea {display: block; width: 290px; float: left;}
+.create_squad #create_squad button {display: block; clear: both; margin: 5px 0 10px 0;}
 
 
 /* =========================== */
