@@ -85,7 +85,11 @@ go.push({
       var user = $.cookie('gcuser');
       if (user) $.extend(window, eval('(' + user + ')'));
       if (!This.login_after_page_load) window.location.reload();
-      else go.dispatch('login') || window.location.reload();
+      else {
+        if (This.tool == 'login') go('tool=');
+        go('#complete_auth_from_cookie');
+        go.dispatch('did_login') || window.location.reload();
+      } 
     });
   },
 
