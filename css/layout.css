@@ -243,6 +243,8 @@ line-height:1.2; margin: 2px 0 0 5px;}
   margin: 2px 0 7px;
 }
 
+.modal_error { color: #CC4900;}
+
 /* =========================== */
 /* = modals - specific       = */
 /* =========================== */
