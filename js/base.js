@@ -132,8 +132,8 @@ go.push({
     });
   },
   
-  pw_form_submitted: function() {
-    $.post('/api/me', {'password': This.form_data.pw}, go.f('tool=iphone'));
+  submit_password: function() {
+    $.post('/api/me', {'password': This.form_data.pw}, go.onwards);
   },
 
   // roles & auth
