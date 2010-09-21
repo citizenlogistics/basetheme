@@ -10,8 +10,8 @@ html: BUILD/basetool.html
 BUILD/base.css: BUILD css/*.css
 	cat css/*.css > BUILD/base.css
 
-BUILD/base.js: BUILD ../gojs/go.js js/base.js
-	cat ../gojs/go.js js/base.js > BUILD/base.js
+BUILD/base.js: BUILD ../gojs/go.js js/*.js
+	cat ../gojs/go.js js/*.js > BUILD/base.js
 
 BUILD/super.js: BUILD ../gojs/*.js gcjs/*.js js/base.js
 	cat ../gojs/*.js gcjs/*.js js/*.js > BUILD/super.js
