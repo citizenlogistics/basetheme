@@ -164,8 +164,8 @@ line-height:1.2; margin: 2px 0 0 5px;}
 /* = modals                  = */
 /* =========================== */
 
-.hidden_unless_active { display: none; }
-.hidden_unless_active.active { display: block; }
+body .hidden_unless_active { display: none; }
+body .hidden_unless_active.active { display: block; }
 
 .modal {
   color: #474848;
