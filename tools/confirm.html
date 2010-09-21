@@ -1,0 +1,30 @@
+<div class="magic clearfix">
+  <div id="sys_confirmation" if="need_point_confirmation" class="hide clearfix">
+    <div if="need_email_confirmation">
+      <p>Please confirm your email address</p>
+      <div class="details">Sent to <span fill="user_email"></span>. Didn't receive the email?  Check your spam box or
+        <form class="reconfirm" action="/api/people/reconfirm" method="POST" style="display:inline">
+          <input name="squad" type="hidden" fill="current_stream value" />
+          <input name="sysid" type="hidden" fill="user_email value" />
+          <input name="sys" type="hidden" value="e" />
+          <input type="submit" value="Resend" />
+        </form>
+      </div>
+    </div>
+
+    <hr if="need_multiple_point_confirmation" />
+
+    <div if="need_mobile_confirmation">
+      <p>Please confirm your mobile number</p>
+      <div class="details">Sent to <span fill="pretty_user_mobile"></span>. Didn't receive the text? Text <b>EZ</b> to <b>313131</b> (if you're in the US) or +923365592750 (in Pakistan) or
+        <form class="reconfirm" action="/api/people/reconfirm" method="POST" style="display:inline">
+          <input name="squad" type="hidden" fill="current_stream value" />
+          <input name="sysid" type="hidden" fill="user_mobile value" />
+          <input name="sys" type="hidden" value="m" />
+          <input type="submit" value="Resend" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

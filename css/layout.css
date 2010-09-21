@@ -89,8 +89,8 @@ body#page #header { height: 30px; }
 #sys_confirmation {background: #FFFDDA; padding: 15px 20px;}
 #sys_confirmation img {height: 32px; width: 32px; background: #777; float: left; margin-right: 10px;}
 #sys_confirmation p {margin-bottom: 0; font-weight: bold;}
-#sys_confirmation p.details {color: #999; margin-bottom: 0; font-weight: normal;}
-#sys_confirmation div {float: left;}
+#sys_confirmation .details {color: #999; margin-bottom: 0; font-weight: normal;}
+/* #sys_confirmation div {float: left;} */
 
 #directive {background: white; padding: 20px 20px; border-bottom: 1px solid #CACACA;}
 #directive h2 {font-size: 24px; font-weight: bold;}
