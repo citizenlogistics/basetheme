@@ -106,8 +106,19 @@ go.push({
   redirect: function(url) {
     window.location.href = url;
   },
-  
-  
+
+  flash: function(){
+    var flash = $.cookie('flash');
+    if (flash) {
+      var modal_flash = $('.active.modal .flash');
+      if (modal_flash.length) modal_flash.html(flash).show();
+      else $.jGrowl(flash);
+
+      $.cookie('flash', '');
+    }
+  },
+
+
   // signup specific
   
   verify_mobile: function(){
