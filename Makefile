@@ -1,3 +1,5 @@
+default: html css js
+
 test: css js
 	open -a WebKit index.html
 
