@@ -32,14 +32,6 @@ StreamLoader = {
     StreamLoader.timer = setTimeout(function(){StreamLoader.autoload();}, interval || StreamLoader.interval);
   },
 
-  maybe_trigger_load: function() {
-    if (StreamLoader.go_on_load && ($values(Agents.by_tag).length > 0 || most_recent_item)) {
-      go(StreamLoader.go_on_load);
-      $('#loading_data').remove();
-      delete StreamLoader.go_on_load;
-    }
-  },
-
   autoload: function(callback){
     var uri = StreamLoader.stream_url;
     if (atevent) uri += '&since=' + atevent;
@@ -48,7 +40,6 @@ StreamLoader = {
     }
 
     $.getScript(uri, callback);
-    StreamLoader.maybe_trigger_load();
   },
 
   fetch: function(url, options, after){
