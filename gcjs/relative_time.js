@@ -16,9 +16,18 @@ function $mon_date(ts) {
 }
 
 function $is_today(ts) {
+  return $is_same_date(ts, new Date());
+}
+
+function $is_yesterday(ts) {
+  var yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  return $is_same_date(ts, yesterday);
+}
+
+function $is_same_date(ts, date) {
   d = new Date(ts * 1000);
-  now = new Date();
-  return d.getDate() == now.getDate() && d.getMonth() == now.getMonth() && d.getYear() == now.getYear();
+  return d.getDate() == date.getDate() && d.getMonth() == date.getMonth() && d.getYear() == date.getYear();
 }
 
 function $time_and_or_date(ts){
