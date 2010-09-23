@@ -42,6 +42,13 @@ textarea {width: 95%; height: auto;}
 .top {margin-top:0;padding-top:0;}
 .bottom {margin-bottom:0;padding-bottom:0;}
 
+
+/* ===================== */
+/* = layout for viewer = */
+/* ===================== */
+
+body#viewer { height: 100%; width: 100%; overflow: hidden; }
+
 /* =========================== */
 /* = layout for static pages = */
 /* =========================== */
