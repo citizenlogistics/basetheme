@@ -321,6 +321,60 @@ body .hidden_unless_active.active { display: block; }
   padding: 5px 12px 0 0;
 }
 
+/* show answers modal */
+#answers_for_question {
+  margin: 10px 0 0 0;
+}
+
+#answers_for_question .thumb {
+  float: left;
+  width: 36px;
+  margin-right: 10px;
+}
+
+#answers_for_question img {
+  height: 36px;
+  width: 36px;
+}
+
+#answers_for_question .info {
+  float: left;
+  height: 36px;
+  width: 350px;
+}
+
+/* chat modal */
+.chat_tool input[type="text"] { width: 97%; }
+
+.chat_tool form { margin-bottom: 5px; }
+
+ul#latest_chats {
+  list-style: none;
+  overflow-y: auto;
+  height: 350px;
+  margin: 0;
+/*
+  padding: 10px 0 10px 10px;
+  background: #fff;
+*/
+}
+
+#latest_chats li {
+  margin: 0 0 5px 0;
+  padding-right: 10px;
+  line-height: 1.2;
+}
+
+/* events modal */
+.view_events_tool .event {
+  margin: 0 0 7px 0;
+  text-indent: -35px;
+  padding-left: 35px;
+}
+
+.view_events_tool .time.divider {
+  color: #333;
+}
 
 
 
