@@ -83,14 +83,11 @@ Events = Anncs = new Resource('Annc', {
     });
   },
 
-  // Returns improved events, sorted by desc time, with 'chat' events filtered out.
-  events: function(type) {
-    var events = typeof type == 'string' ?
-      Anncs.find("=atype " + type).sort_by('.created_at', -1) :
+  // Returns improved events, sorted by desc time.  q can be a Resource query string.
+  events: function(q) {
+    var events = typeof q == 'string' ?
+      Anncs.find(q).sort_by('.created_at', -1) :
       Anncs.everything().slice(0).reverse();
-    events = events.grep(function(x){
-      return x && x.atype != 'chat' && x.atype != 'completed timeout' && x.atype != 'completed switched';
-    });
     $.each(events, function(){ Event.improve(this); });
     return events;
    }
@@ -128,7 +125,7 @@ Event = {
   },
 
   color: function(ev){
-    if ($w(ev.atype).intersect($w('viewer timeout switched')).length > 0) return "invisible";
+    if ($w(ev.atype).intersect($w('viewer timeout switched chat')).length > 0) return "invisible";
     if ($w('assigned msg pm').indexOf(ev.atype) >= 0) return "purple";
     if ($w('error warning').indexOf(ev.atype) >= 0) return "red";
     if ($w('reported').indexOf(ev.atype) >= 0) return "green";
