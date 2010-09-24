@@ -88,7 +88,9 @@ Events = Anncs = new Resource('Annc', {
     var events = typeof type == 'string' ?
       Anncs.find("=atype " + type).sort_by('.created_at', -1) :
       Anncs.everything().slice(0).reverse();
-    events = events.grep(function(x){ return x && x.atype != 'chat'; });
+    events = events.grep(function(x){
+      return x && x.atype != 'chat' && x.atype != 'completed timeout' && x.atype != 'completed switched';
+    });
     $.each(events, function(){ Event.improve(this); });
     return events;
    }
@@ -116,6 +118,7 @@ Event = {
     try { ev.actor = ev.actor_tag && ev.actor_tag.resource(); } catch(e) {
       go.err('error during ev.actor_tag.resource() for ev ' + ev, e);
     }
+    ev.on_re = op ? '<span class="re"> on <a href="#@#{' + ev.re + '}">a mission</a></span>' : '';
     ev.actor_title = ev.actor_title || (ev.actor && ev.actor.title) ||
                      ev.actor_name  || ev.item_title || 'UnknownUser';
     ev.actor_thumb_url = ev.actor && ev.actor.thumb_url;
@@ -125,77 +128,40 @@ Event = {
   },
 
   color: function(ev){
-    if (ev.atype == 'wish') return "blue";
-    if ($w('viewer').indexOf(ev.atype) >= 0) return "invisible";
-    if ($w('available enlist unenlist off signup').indexOf(ev.atype) >= 0) return "grey";
-    if ($w('said').indexOf(ev.atype) >= 0) return "black";
+    if ($w(ev.atype).intersect($w('viewer timeout switched')).length > 0) return "invisible";
     if ($w('assigned msg pm').indexOf(ev.atype) >= 0) return "purple";
-    return "green";
+    if ($w('error warning').indexOf(ev.atype) >= 0) return "red";
+    if ($w('reported').indexOf(ev.atype) >= 0) return "green";
+    if ($w('signup').indexOf(ev.atype) >= 0) return "grey";
+    return "";
   },
 
   whats: {
 
-    chat: ": #{msg}",
-    note: "commented: #{msg}",
-
-    // initiatives
-    citywish:
-      "where <span class='wish'>#{msg}</span>",
-    requested:
-      "activated agent <a href='#@#{item_tag}'>#{item_title}</a>",
-    wish:
-      "wished <span class='wish'>to #{msg}</span>",
-    new_landmark:
-      "created a <a href='#@#{landmark_tag}'>new landmark</a>: #{item_title}",
-
-    // initiative reports
-    dead:       "is no longer available",
-    invited:    "invited #{msg} to: <span class='report'>#{opname}</span>",
-    accepted:   "accepted task: <span class='report'>#{opname}</span>",
-    assigned:   "gave an assignment to <a href='#@#{item_tag}'>#{item_title}</a>: <span class='assignment'>#{msg}</span>",
-    // accepted:   "accepted the assignment",
-    reported:   "reported: <span class='report'>#{msg}</span>",
-    photo:      "sent a photo: <img src=\"#{msg}\"/>",
-    declined:   "declined the assignment",
-    completed:  "completed <span class='report'>#{opname}</span>",
-    summon:     "summoned their squad!",
-    agree:      "agreed with a wish",
-
+    // operations
+    invited:    "invited #{msg}<span class='re'> to: <a href='#@#{re}'>#{opname}</a></span>",
+    accepted:   "accepted<span class='re'>: <a href='#@#{re}'>#{opname}</a></span>",
+    assigned:   "gave an assignment to <a href='#@#{item_tag}'>#{item_title}</a>#{on_re}: <span class='msg'>#{msg}</span>",
+    declined:   "declined<span class='re'>: <a href='#@#{re}'>#{opname}</a></span>",
+    completed:  "completed<span class='re'>: <a href='#@#{re}'>#{opname}</a></span>",
+    answered:   "answered<span class='re'> <a href='#@#{re}'>a question</a></span>: <span class='msg'>#{msg}</span>",
+    reported:   "reported#{on_re}: <span class='msg'>#{msg}</span>",
 
     // others
-    msg:
-      "sent a message to <a href='#@#{item_tag}'>#{item_name}</a>: <span class='assignment'>#{msg}</span>",
-    pm: "sent a private message: <span class='assignment'>#{msg}</span>",
-    freed:
-      "freed <a href='#@#{item_tag}'>#{item_tag}</a> to do other things",
-    enlist:
-      "enlisted as part of agent <a href='#@#{item_tag}'>#{item_tag}</a>'s crew",
-    unenlist: 
-      "removed themselves from agent <a href='#@#{item_tag}'>#{item_tag}</a>'s crew",
-    import_completed: "import completed: #{msg}",
-    error: "error: <span class='error'>#{msg}</span>",
-    warning: "<span class='warning'>#{msg}</span>",
+    msg:      "contacted agent <a href='#@#{item_tag}'>#{item_name}</a>#{on_re}: <span class='msg'>#{msg}</span>",
+    pm:       "contacted the organizers#{on_re}: <span class='msg'>#{msg}</span>",
+    chat:     ": <span class='msg'>#{msg}</span>",
+    note:     "commented#{on_re}: <span class='msg'>#{msg}</span>",
+    error:    "error#{on_re}: <span class='error'>#{msg}</span>",
+    warning:  "warning#{on_re}: <span class='warning'>#{msg}</span>",
 
-    // signup reports
-    email_invited: "sent an email invite to #{msg}",
-    email_confirmed: "accepted an invitation",
+    // signups
+    email_invited:    "sent a squad invitation to #{msg}",
+    email_confirmed:  "accepted a squad invitation",
     mobile_contacted: "was contacted via SMS",
-    signup:     "signed up!",
+    signup:           "signed up!",
+    import_completed: "import completed: #{msg}"
 
-    login:      "logged in",
-    unlatched:  "is now free to be organized",
-    off:        "is gone",
-    summonable: "is now summonable",
-    no_response:  "did not respond",
-    viewer:     "is viewing the map",
-    answered:     "answered \"<span class='assignment'>#{msg}</span>\"",
-    answered_yes:     "answered yes",
-    answered_no:     "answered no",
-    available:  "became available",
-    free:       "is free again",
-    extended:   "extended their time available",
-    relocated:  "reported a new location",
-    shout:      "shouted: <span class='shout'>#{msg}</span>"
   }
 
 };
