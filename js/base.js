@@ -129,7 +129,7 @@ go.push({
   },
   
   add_self: function() {
-    $.post('/api/'+current_stream+'/members', go.onwards);
+    $.post('/api/s'+current_stream+'/members', go.onwards);
   },
   
   redirect_squad_page: function(page) {
