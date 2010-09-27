@@ -1,4 +1,5 @@
 var most_recent_item = null;
+var item_children = {};
 var fuzzfactor = {};
 var seen = {};
 
@@ -61,7 +62,6 @@ function off(tag){
 
 Agents = new Resource('Agent', {
   enhancer: function(agent) {
-    agent.recent_events = [];
     if (GCLibClient.agent_enhanced) GCLibClient.agent_enhanced(agent);
   },
   
@@ -84,8 +84,4 @@ Agents = new Resource('Agent', {
 });
 
 
-Landmarks = new Resource('Landmark', {
-  enhancer: function(lm) {
-    lm.recent_events = [];
-  }
-});
+Landmarks = new Resource('Landmark', {});

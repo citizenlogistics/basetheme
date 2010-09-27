@@ -72,9 +72,15 @@ Events = Anncs = new Resource('Annc', {
         // operation to jump to the top of the sorted dropdown
         if (event.atype != 'note') op_last_child[event.re] = event;
       }
-    } 
-    var item = event.item_tag && event.item_tag.resource();
-    item && item.recent_events && item.recent_events.push(event);
+    }
+    if (event.item_tag) {
+      if (!item_children[event.item_tag]) item_children[event.item_tag] = [];
+      item_children[event.item_tag].push(event);
+    }
+    if (event.actor_tag && event.item_tag != event.actor_tag) {
+      if (!item_children[event.actor_tag]) item_children[event.actor_tag] = [];
+      item_children[event.actor_tag].push(event);
+    }
   },
 
   changed: function(what_changed) {
