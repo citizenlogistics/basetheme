@@ -92,7 +92,7 @@ Events = Anncs = new Resource('Annc', {
   // Returns improved events, sorted by desc time.  q can be a Resource query string.
   events: function(q) {
     var events = typeof q == 'string' ?
-      Anncs.find(q).sort_by('.created_at', -1) :
+      Anncs.find(q).sort_by('.created_at', { order: 'desc' }) :
       Anncs.everything().slice(0).reverse();
     $.each(events, function(){ Event.improve(this); });
     return events;
