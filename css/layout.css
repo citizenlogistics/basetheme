@@ -178,6 +178,7 @@ line-height:1.2; margin: 2px 0 0 5px;}
 
 body .hidden_unless_active { display: none; }
 body .hidden_unless_active.active { display: block; }
+body span.hidden_unless_active.active { display: inline; }
 
 .modal {
   width: 320px;
