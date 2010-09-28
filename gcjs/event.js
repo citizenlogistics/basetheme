@@ -121,7 +121,7 @@ Event = {
     try { ev.actor = ev.actor_tag && ev.actor_tag.resource(); } catch(e) {
       go.err('error during ev.actor_tag.resource() for ev ' + ev, e);
     }
-    ev.on_re = op ? '<span class="re"> on <a href="#@#{' + ev.re + '}">a mission</a></span>' : '';
+    ev.on_re = op ? '<span class="re"> on <a href="#@' + ev.re + '">a mission</a></span>' : '';
     ev.actor_title = ev.actor_title || (ev.actor && ev.actor.title) ||
                      ev.actor_name  || ev.item_title || 'UnknownUser';
     ev.actor_thumb_url = ev.actor && ev.actor.thumb_url;
