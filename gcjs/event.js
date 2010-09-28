@@ -3,23 +3,23 @@ var last_ev_at = null;
 Chats = [];
 
 // event - anything that happened
-function ev(city_id, venture_uuid, item_id, created_at, atype, msg, x,
+function ev(city_id, venture_uuid, item_id, created_ts, atype, msg, x,
             uuid, actor_id, squad_id, priv)
 {
   x = x || {};
   venture_uuid = venture_uuid && venture_uuid.replace('Op__', '');
   item_id = item_id && item_id.replace('Person__', '');
 
-  var annc_tag = uuid || x.uuid || ('e' + venture_uuid + item_id + created_at);
-  if (last_ev_id == annc_tag && last_ev_at == created_at) return null;
+  var annc_tag = uuid || x.uuid || ('e' + venture_uuid + item_id + created_ts);
+  if (last_ev_id == annc_tag && last_ev_at == created_ts) return null;
   last_ev_id = annc_tag;
-  last_ev_at = created_at;  
+  last_ev_at = created_ts;
   x['msg'] = msg || x['msg'];
 
   var result = Anncs.add_or_update(annc_tag, {
     annc_tag: annc_tag,
     item_tag: item_id,
-    created_at: created_at,
+    created_ts: created_ts,
     atype: atype,
     actor_tag: actor_id,
     re: venture_uuid,
@@ -34,7 +34,7 @@ function ev(city_id, venture_uuid, item_id, created_at, atype, msg, x,
 }
 
 // old style event, for backwards-compatibility
-function event(annc_tag, created_at, atype, actor_tag, re, atags, city_id, item_tag, json_etc){
+function event(annc_tag, created_ts, atype, actor_tag, re, atags, city_id, item_tag, json_etc){
   annc_tag = annc_tag.replace('Annc__', 'e');
   item_tag = item_tag && item_tag.replace('Person__', '');
   actor_tag = actor_tag && actor_tag.replace('Person__', '');
@@ -43,7 +43,7 @@ function event(annc_tag, created_at, atype, actor_tag, re, atags, city_id, item_
   return Anncs.add_or_update(annc_tag, {
     annc_tag: annc_tag,
     item_tag: item_tag,
-    created_at: created_at,
+    created_ts: created_ts,
     atype: atype,
     actor_tag: actor_tag,
     re: re,
@@ -66,7 +66,7 @@ Events = Anncs = new Resource('Annc', {
     if (event.re) {
       if (!op_children[event.re]) op_children[event.re] = [];
       op_children[event.re].push(event);
-      if (!op_last_child[event.re] || (op_last_child[event.re].created_at || 0) < event.created_at)
+      if (!op_last_child[event.re] || (op_last_child[event.re].created_ts || 0) < event.created_ts)
       {
         // hack: ignore note event b/c the organizer probably created it and hence doesn't want the
         // operation to jump to the top of the sorted dropdown
@@ -92,7 +92,7 @@ Events = Anncs = new Resource('Annc', {
   // Returns improved events, sorted by desc time.  q can be a Resource query string.
   events: function(q) {
     var events = typeof q == 'string' ?
-      Anncs.find(q).sort_by('.created_at', { order: 'desc' }) :
+      Anncs.find(q).sort_by('.created_ts', { order: 'desc' }) :
       Anncs.everything().slice(0).reverse();
     $.each(events, function(){ Event.improve(this); });
     return events;
@@ -103,7 +103,7 @@ Events = Anncs = new Resource('Annc', {
 Event = {
 
   improve: function(ev) {
-    ev.when = $time_and_or_date(ev.created_at);
+    ev.when = $time_and_or_date(ev.created_ts);
     ev.color = Event.color(ev);
     ev.item = ev.item || (ev.item_tag && ev.item_tag.resource());
     ev.item_title = ev.item_title || ev.item && ev.item.title;
