@@ -207,14 +207,14 @@ body span.hidden_unless_active.active { display: inline; }
 }
 
 .modal_wide, .modal.wide {
-  width: 400px;
+  width: 405px;
 }
 
 /* to replace .modal .form_fields */
 .wide.leftcol { width: 220px; }
 
 /* to replace .modal .sidebar */
-.wide.rightcol { width: 160px; }
+.wide.rightcol { width: 165px; }
 
 .modal.superwide {
   width: 600px;
@@ -230,7 +230,7 @@ body span.hidden_unless_active.active { display: inline; }
 /* deprecated */
 .modal .sidebar {
   float: left;
-  width: 160px;
+  width: 165px;
   padding: 10px 0 0 10px;
 }
 
