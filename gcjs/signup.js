@@ -1,7 +1,7 @@
 Signup = {
   signup_form_submitted: function(data) {
     // TODO: handle error
-    return $.post_with_squad('/api/people/join', data, function() {
+    return $.post_with_squad('/people/join', data, function() {
       go('#complete_auth_from_cookie');
       go('tool=signup_details');
     });
@@ -21,7 +21,7 @@ Signup = {
     }
 
     // TODO: handle error
-    return $.post_with_squad('/api/agents/update', data, function() {
+    return $.post_with_squad('/agents/update', data, function() {
       go('#complete_auth_from_cookie');
       go.dispatch('signup_complete') || go('#signup_complete_default');
     });
