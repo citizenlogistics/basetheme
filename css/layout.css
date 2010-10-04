@@ -305,6 +305,15 @@ body span.hidden_unless_active.active { display: inline; }
   margin-bottom: 10px;
 }
 
+.current_invitations_tool {
+  width: 750px;
+}
+
+#current_invitations {
+  max-height:400px;
+  overflow-y:auto;
+}
+
 .current_invitations_tool th {
   text-align: left;
   padding: 0 0 3px 0;
