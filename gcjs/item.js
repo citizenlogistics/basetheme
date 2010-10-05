@@ -20,17 +20,12 @@ function item(city, tag, title, thumb_url, lat, lng, atags, latch, comm, req, x)
 
   // spread out items that are geocoded to a single common city/zip point
   var pos = lat+","+lng;
-  if (seen[pos]){
+  if (seen[pos] && seen[pos] != tag){
     if (!fuzzfactor[tag]) fuzzfactor[tag] = make_fuzzfactor(x.acc);
     lat = Number(lat) + fuzzfactor[tag][0];
     lng = Number(lng) + fuzzfactor[tag][1];
-  } else seen[pos] = true;
-  
-  // if (x && (x.acc == 'zip' || x.acc == 'city') && lat && lng) {
-  //   if (!fuzzfactor[tag]) fuzzfactor[tag] = make_fuzzfactor();
-  //   lat = Number(lat) + fuzzfactor[tag][0];
-  //   lng = Number(lng) + fuzzfactor[tag][1];
-  // }
+  } else seen[pos] = tag;
+
   var via_sys = (comm && comm.split(/ /)[3] || '');
   return most_recent_item = Resource.add_or_update(tag, {
     city_id: city,
