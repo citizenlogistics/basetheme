@@ -333,7 +333,9 @@ body span.hidden_unless_active.active { display: inline; }
 
 /* show answers modal */
 #answers_for_question {
-  margin: 10px 0 0 0;
+  margin: 10px 0;
+  max-height:400px;
+  overflow-y:auto;
 }
 
 #answers_for_question .thumb {
@@ -347,11 +349,10 @@ body span.hidden_unless_active.active { display: inline; }
   width: 36px;
 }
 
-#answers_for_question .info {
-  float: left;
-  height: 36px;
-  width: 350px;
+.wish {
+  margin-bottom: 7px;
 }
+
 
 .tag .count {
   float: right;
