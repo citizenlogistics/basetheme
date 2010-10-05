@@ -71,7 +71,7 @@ body#page #header { height: 30px; }
     padding-top: 10px;
 }
 
-#footer a { color: #0066CC; }
+#footer a { color: white; }
 
 #tools > div.active.bigwhite {
     text-align: center;
