@@ -235,6 +235,7 @@ body span.hidden_unless_active.active { display: inline; }
 }
 
 .modal img.closebox {
+  position: absolute;
   right: 10px;
   top: 10px;
 }
