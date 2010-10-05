@@ -353,6 +353,11 @@ body span.hidden_unless_active.active { display: inline; }
   width: 350px;
 }
 
+.tag .count {
+  float: right;
+  margin-right:7px;
+}
+
 /* chat modal */
 .chat_tool input[type="text"] { width: 97%; }
 
