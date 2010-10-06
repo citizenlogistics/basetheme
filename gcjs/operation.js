@@ -57,3 +57,16 @@ Ops = new Resource('Op', {
     if (GCLibClient.op_enhanced) GCLibClient.op_enhanced(x);
   }
 });
+
+Operation = {
+  improve: function(op) {
+    op.when = op.created_ts > 0 ? $time_and_or_date(op.created_ts) : '';
+    var title = op.title && op.title.indexOf('Question') == 0 ? op.title : 'Mission: ' + op.title;
+    op.what = '<a href="#@' + op.id + '">' + title + '</a>';
+  },
+
+  last_update_ts: function(x) {
+    if (op_last_child[x.id] && op_last_child[x.id].created_ts > 0) return op_last_child[x.id].created_ts;
+    return x.created_ts || 0;
+  }
+};
