@@ -154,7 +154,14 @@ body#page #header { height: 30px; }
 .squad_details {margin: 0 0 20px;}
 .squad_details h2 {margin: 0 0 4px; font-size: 24px; font-weight: bold;}
 .squad_details h4 {font-weight: normal;}
-.squad_details img {float: left; height: 48px; width: 48px; background-color: #bbb; margin-right: 10px;}
+
+.squad_details img {
+  float: left;
+  height: 64px;
+  background-color: #bbb;
+  margin-right: 10px;
+}
+
 
 .invite_tool {margin: 20px 0;}
 #mobile_form {margin: 20px 0;}

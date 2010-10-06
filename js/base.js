@@ -147,6 +147,10 @@ go.push({
     $.post('/api/me', {'password': This.form_data.pw}, go.onwards);
   },
 
+  current_stream_image: function(){
+    return window.current_stream_image_url || window.current_stream_thumb;
+  },
+
   // roles & auth
   stream_role_organizer: function() {
     return window.stream_role == 'leader' || window.stream_role == 'organizer';
