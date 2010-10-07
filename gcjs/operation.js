@@ -84,22 +84,22 @@ Operation = {
 
     var state_types = $w('accepted completed declined answered reported');
     $.each(op_children[op_id] || {}, function(i, ev){
-      var type = ev.atype;
-      if (ev.msg_parsed) type = type + ' ' + ev.msg_parsed;
+      var parsed_type = ev.atype;
+      if (ev.msg_parsed) parsed_type = parsed_type + ' ' + ev.msg_parsed;
 
-      counts[type] = counts[type] || 0;      
+      counts[parsed_type] = counts[parsed_type] || 0;
 
-      if (state_types.contains(type)) {
-        counts[type] += 1;
+      if (state_types.contains(ev.atype)) {
+        counts[parsed_type] += 1;
         if (ev.item_tag) {
-          agents[ev.item_tag] = type;
+          agents[ev.item_tag] = parsed_type;
           // completion states overide others
-          if (type == 'completed' || ev.atype == 'answered') agents[ev.item_tag] = type;
+          if (ev.atype == 'completed' || ev.atype == 'answered') agents[ev.item_tag] = parsed_type;
         }
       }
-      else if (type == 'invited') {
+      else if (ev.atype == 'invited') {
         var m = e.msg && e.msg.match(/\d+/);
-        counts[type] += Number(m && m[0]) || 0;
+        counts[parsed_type] += Number(m && m[0]) || 0;
       }
     });
   },
