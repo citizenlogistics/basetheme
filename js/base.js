@@ -1,5 +1,5 @@
-var user = $.cookie('gcuser');
-if (user) $.extend(window, eval('(' + user + ')'));
+// var user = $.cookie('gcuser');
+// if (user) $.extend(window, eval('(' + user + ')'));
 
 function watch_location(){
   return navigator.geolocation && navigator.geolocation.watchPosition(function(position) {
@@ -18,7 +18,9 @@ go.push({
   },
   password_regex: function() { return new RegExp(/[^\s]{5,}/); },
   
-  start: go.f('#complete_auth_from_cookie'),
+  start: function(){
+    if (!window.dontloadcookieonstart) go('#complete_auth_from_cookie');
+  },
   
   complete_auth_from_cookie: function(){
     var user = $.cookie('gcuser');
