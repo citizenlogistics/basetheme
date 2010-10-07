@@ -66,7 +66,7 @@ Events = Anncs = new Resource('Annc', {
     if (event.re) {
       if (!op_children[event.re]) op_children[event.re] = [];
       op_children[event.re].push(event);
-      op_states[event.re] = op_counts[event.re] = null;
+      op_agents[event.re] = op_counts[event.re] = null;
       if (!op_last_child[event.re] || (op_last_child[event.re].created_ts || 0) < event.created_ts)
       {
         // hack: ignore note event b/c the organizer probably created it and hence doesn't want the

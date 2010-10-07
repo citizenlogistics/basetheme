@@ -1,6 +1,6 @@
 var most_recent_op = null;
 var op_children = {};
-var op_states = {};
+var op_agents = {};
 var op_counts = {};
 var op_last_child = {};
 
@@ -67,32 +67,41 @@ Operation = {
     op.what = '<a href="#@' + op.id + '">' + title + '</a>';
   },
 
-  coalesce: function(op_id) {
-    if (op_states[op_id] && op_counts[op_id]) return;
-    var states = op_states[op_id] = {};
-    var counts = op_counts[op_id] = {};
+  counts: function(op_id) {
+    Operation.coalesce(op_id);
+    return op_counts[op_id];
+  },
 
-    var state_types = $w('accepted completed declined answered');
-    var incr_types = $w('reported');
+  agents: function(op_id) {
+    Operation.coalesce(op_id);
+    return op_agents[op_id];
+  },
+
+  coalesce: function(op_id) {
+    if (op_counts[op_id] && op_agents[op_id]) return;
+    var counts = op_counts[op_id] = {};
+    var agents = op_agents[op_id] = {};
+
+    var state_types = $w('accepted completed declined answered reported');
     $.each(op_children[op_id] || {}, function(i, ev){
       var type = ev.atype;
       if (ev.msg_parsed) type = type + ' ' + ev.msg_parsed;
-      counts[type] = counts[type] || 0;
+
+      counts[type] = counts[type] || 0;      
 
       if (state_types.contains(type)) {
-        var state = states[type] = states[type] || {};
-        if (ev.actor_tag) state[ev.actor_tag] = ev;
-      }
-      else if (incr_types.contains(type)) {
         counts[type] += 1;
+        if (ev.item_tag) {
+          agents[ev.item_tag] = type;
+          // completion states overide others
+          if (type == 'completed' || ev.atype == 'answered') agents[ev.item_tag] = type;
+        }
       }
       else if (type == 'invited') {
         var m = e.msg && e.msg.match(/\d+/);
         counts[type] += Number(m && m[0]) || 0;
       }
     });
-
-    $.each(state_types, function(i, type){ if (states[type]) counts[type] = $keys(states[type]).length; });
   },
 
   last_update_ts: function(x) {
