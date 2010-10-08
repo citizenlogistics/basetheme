@@ -155,7 +155,7 @@ Event = {
     msg:      "contacted agent <a href='#@#{item_tag}'>#{item_name}</a>#{on_re}: <span class='msg'>#{msg}</span>",
     pm:       "contacted the organizers#{on_re}: <span class='msg'>#{msg}</span>",
     chat:     ": <span class='msg'>#{msg}</span>",
-    note:     "commented#{on_re}: <span class='msg'>#{msg}</span>",
+    note:     "noted privately#{on_re}: <span class='msg'>#{msg}</span>",
     error:    "error#{on_re}: <span class='error'>#{msg}</span>",
     warning:  "warning#{on_re}: <span class='warning'>#{msg}</span>",
 
