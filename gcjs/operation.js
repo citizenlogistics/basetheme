@@ -98,7 +98,7 @@ Operation = {
         }
       }
       else if (ev.atype == 'invited') {
-        var m = e.msg && e.msg.match(/\d+/);
+        var m = ev.msg && ev.msg.match(/\d+/);
         counts[parsed_type] += Number(m && m[0]) || 0;
       }
     });
