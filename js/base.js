@@ -46,11 +46,7 @@ go.push({
     $('body').toggleClass('logged_in',  window.authority != null);
     $('body').toggleClass('logged_out', window.authority == null);
   },
-  
-  did_user_ready: function() {
-    $('body').removeClass('loading');
-  },
-  
+
   user_ready_default: function() {
     if (window.authority) {
       go.dispatch('user_ready_logged_in')  || go('#user_ready_logged_in_default');
