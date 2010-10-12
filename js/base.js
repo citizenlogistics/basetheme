@@ -63,7 +63,7 @@ go.push({
 
   logout: function() {
     if (This.facebook_uid) FB.logout(go.f('#facebook_logout'));
-    else go('#redirect("/api/logout")');
+    else go('#redirect("/api/logout?sys=w")');
   },
 
   // We've heard back from facebook
@@ -75,7 +75,7 @@ go.push({
 
   // User logged into FB from a Groundcrew page
   facebook_login: go.f('#facebook_auth_in_gx'),
-  facebook_logout: go.f('#redirect("/api/logout")'),
+  facebook_logout: go.f('#redirect("/api/logout?sys=w")'),
 
   // User account from FB needs to be synced with account in GX
   facebook_auth_in_gx: function() {
