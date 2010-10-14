@@ -116,6 +116,10 @@ body#page #header { height: 30px; }
 #directive #organizer_thumb {margin-right: 15px;}
 #directive textarea {width: 98%; height: auto;}
 #directive h3.thanks {font-size: 22px; margin: 15px 0 0 0;}
+#directive .status {
+  color: #FF763C;
+  font-weight: bold;
+}
 
 #comments {padding: 20px 20px; color: #474848; background-color: #E9E9E9;}
 #comments p {margin: 0 0 .3em 0;}
