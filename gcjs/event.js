@@ -6,31 +6,36 @@ Chats = [];
 function ev(city_id, venture_uuid, item_id, created_ts, atype, msg, x,
             uuid, actor_id, squad_id, priv)
 {
-  x = x || {};
-  venture_uuid = venture_uuid && venture_uuid.replace('Op__', '');
-  item_id = item_id && item_id.replace('Person__', '');
+  try {
+    x = x || {};
+    venture_uuid = venture_uuid && venture_uuid.replace('Op__', '');
+    item_id = item_id && item_id.replace('Person__', '');
 
-  var annc_tag = uuid || x.uuid || ('e' + venture_uuid + item_id + created_ts);
-  if (last_ev_id == annc_tag && last_ev_at == created_ts) return null;
-  last_ev_id = annc_tag;
-  last_ev_at = created_ts;
-  x['msg'] = msg || x['msg'];
+    var annc_tag = uuid || x.uuid || ('e' + venture_uuid + item_id + created_ts);
+    if (last_ev_id == annc_tag && last_ev_at == created_ts) return null;
+    last_ev_id = annc_tag;
+    last_ev_at = created_ts;
+    x['msg'] = msg || x['msg'];
 
-  var result = Anncs.add_or_update(annc_tag, {
-    annc_tag: annc_tag,
-    item_tag: item_id,
-    created_ts: created_ts,
-    atype: atype,
-    actor_tag: actor_id,
-    re: venture_uuid,
-    atags: atype,
-    city_id: city_id,
-    squad_id: squad_id,
-    priv: priv
-  }, x);
+    var result = Anncs.add_or_update(annc_tag, {
+      annc_tag: annc_tag,
+      item_tag: item_id,
+      created_ts: created_ts,
+      atype: atype,
+      actor_tag: actor_id,
+      re: venture_uuid,
+      atags: atype,
+      city_id: city_id,
+      squad_id: squad_id,
+      priv: priv
+    }, x);
 
-  if (atype == "chat" && result) Chats.push(Event.improve(result));
-  return result;
+    if (atype == "chat" && result) Chats.push(Event.improve(result));
+    return result; 
+  } catch (e) {
+    go.err('ev() error for ' + uuid, e);
+  }
+  return null;
 }
 
 // old style event, for backwards-compatibility

@@ -7,31 +7,36 @@ var op_last_child = {};
 function operation(city, uuid, name, vtype, thumb_url, lat, lng, loc, focii, notes, 
   authority_id, authority_name, created_ts, x, stream_id, type)
 {
-  focii = focii && focii.replace(/Person__/g, '').replace(/Landmark__/g, '');
-  authority_id = authority_id && authority_id.replace('Person__', '');
+  try {
+    focii = focii && focii.replace(/Person__/g, '').replace(/Landmark__/g, '');
+    authority_id = authority_id && authority_id.replace('Person__', '');
 
-  // HACK to work around extra param added to op
-  if (typeof created_ts == 'object' && !x) {
-    x = created_ts;
-    created_ts = null;
+    // HACK to work around extra param added to op
+    if (typeof created_ts == 'object' && !x) {
+      x = created_ts;
+      created_ts = null;
+    }
+    most_recent_op = Resource.add_or_update(uuid, {
+      city_id: Number(city),
+      lat:lat,
+      lng:lng,
+      thumb_url:thumb_url,
+      city:Number(city),
+      title: name,
+      focii: focii,
+      architect: authority_id,
+      architect_name: authority_name,
+      atype: "assignment " + vtype,
+      body: name,
+      created_ts: created_ts,
+      stream_id: stream_id,
+      type: type
+    }, x);
+    return most_recent_op;
+  } catch (e) {
+    go.err('operation() error for ' + uuid, e);
   }
-  most_recent_op = Resource.add_or_update(uuid, {
-    city_id: Number(city),
-    lat:lat,
-    lng:lng,
-    thumb_url:thumb_url,
-    city:Number(city),
-    title: name,
-    focii: focii,
-    architect: authority_id,
-    architect_name: authority_name,
-    atype: "assignment " + vtype,
-    body: name,
-    created_ts: created_ts,
-    stream_id: stream_id,
-    type: type
-  }, x);
-  return most_recent_op;
+  return null;
 }
 
 

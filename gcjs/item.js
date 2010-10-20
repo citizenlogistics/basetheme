@@ -13,45 +13,54 @@ function make_fuzzfactor(acc){
 
 // item - an item on the map
 function item(city, tag, title, thumb_url, lat, lng, atags, latch, comm, req, x){
-  tag = tag.replace('Person__', '').replace('Landmark__', '');
+  try {
+    tag = tag.replace('Person__', '').replace('Landmark__', '');
 
-  // ignore items without lat+lng
-  if (!lat || !lng || lat == 0 || lng == 0) return null;
+    // ignore items without lat+lng
+    if (!lat || !lng || lat == 0 || lng == 0) return null;
 
-  // spread out items that are geocoded to a single common city/zip point
-  var pos = lat+","+lng;
-  if (seen[pos] && seen[pos] != tag){
-    if (!fuzzfactor[tag]) fuzzfactor[tag] = make_fuzzfactor(x.acc);
-    lat = Number(lat) + fuzzfactor[tag][0];
-    lng = Number(lng) + fuzzfactor[tag][1];
-  } else seen[pos] = tag;
+    // spread out items that are geocoded to a single common city/zip point
+    var pos = lat+","+lng;
+    if (seen[pos] && seen[pos] != tag){
+      if (!fuzzfactor[tag]) fuzzfactor[tag] = make_fuzzfactor(x.acc);
+      lat = Number(lat) + fuzzfactor[tag][0];
+      lng = Number(lng) + fuzzfactor[tag][1];
+    } else seen[pos] = tag;
 
-  var via_sys = (comm && comm.split(/ /)[3] || '');
-  return most_recent_item = Resource.add_or_update(tag, {
-    city_id: city,
-    title: title,
-    thumb_url: thumb_url,
-    lat: lat,
-    lng: lng,
-    atags: atags,
-    latch: latch,
-    comm: comm,
-    req: req,
-    via_sys: via_sys
-  }, x);
+    var via_sys = (comm && comm.split(/ /)[3] || '');
+    return most_recent_item = Resource.add_or_update(tag, {
+      city_id: city,
+      title: title,
+      thumb_url: thumb_url,
+      lat: lat,
+      lng: lng,
+      atags: atags,
+      latch: latch,
+      comm: comm,
+      req: req,
+      via_sys: via_sys
+    }, x);    
+  } catch(e) {
+    go.err('item() error for ' + tag, e);
+  }
+  return null;
 }
 
 // TODO: speed test many off() calls in a row
 function off(tag){
-  if (!tag) return;
-  tag = tag.replace('Person__', '').replace('Landmark__', '');
-  if (tag.resource_type() == 'Agent') {
-    Agents.remove(tag);
-    Agents.here_changed();
-  } else if (tag.resource_type() == 'Landmark') {
-    Landmarks.remove(tag);
+  try {
+    if (!tag) return;
+    tag = tag.replace('Person__', '').replace('Landmark__', '');
+    if (tag.resource_type() == 'Agent') {
+      Agents.remove(tag);
+      Agents.here_changed();
+    } else if (tag.resource_type() == 'Landmark') {
+      Landmarks.remove(tag);
+    }
+    go.trigger('item_removed', tag);    
+  } catch(e) {
+    go.err('off() error for ' + tag, e);
   }
-  go.trigger('item_removed', tag);
 }
 
 
