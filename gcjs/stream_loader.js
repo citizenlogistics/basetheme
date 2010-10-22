@@ -21,9 +21,10 @@ StreamLoader = {
       uri += '&city=' + This.city_id;
     }
 
-    $.ajax({ url: uri, dataType: 'script', error: error, success: function() {
-      if (!atevent) error && error(); // if atevent is null, then stream script eval did not complete
-      else success && success();
+    $.ajax({ url: uri, dataType: 'script', error: error, success: function(data, textStatus, req) {
+      // if atevent is null, then stream script eval did not complete
+      if (!atevent) error && error.call(this, req, "atevent null", null);
+      else success && success.call(this, data, textStatus, req);
     }});
   },
 
