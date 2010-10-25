@@ -277,7 +277,7 @@ body span.hidden_unless_active.active { display: inline; }
 }
 
 .modal h3 {
-  margin: 0 0 5px 0;
+  margin: 8px 0 5px 0;
   font-size: 13px;
 }
 
@@ -296,9 +296,13 @@ body span.hidden_unless_active.active { display: inline; }
 }
 
 .modal input[type=text], .modal textarea {
-  width: 90%;
+  width: 93%;
   margin: 2px 0 7px;
 }
+
+.modal input[type=text].short { width: 100px; }
+.modal input[type=text].medium { width: 160px; }
+
 
 .modal .notice { color: #CC4900; }
 
