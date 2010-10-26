@@ -94,6 +94,7 @@ body#page #header { height: 30px; }
 #page h2, #page h3, #page h4 {color: #333;}
 
 #content {margin:0 auto; width: 950px;}
+
 .single_column {margin: 0 auto; width:550px; border-top: solid 2px black; }
 
 #main_column {width:600px; float: left; background: #E9E9E9;}
@@ -107,7 +108,7 @@ body#page #header { height: 30px; }
 #directive {background: white; padding: 20px 20px; border-bottom: 1px solid #CACACA;}
 #directive h2 {font-size: 24px; font-weight: bold;}
 #directive h3 {font-size: 18px; font-weight: bold;}
-#directive h4 {font-size: 14px; font-weight: normal; color: #999; margin: 5px 0 3px;}
+#directive h4 {font-size: 14px; margin: 5px 0 3px;}
 #directive h2 img, #directive h3 img, #directive h4 img {margin: 0 4px -3px 0;}
 
 #directive .op {margin: 0 0 15px;}
@@ -121,9 +122,9 @@ body#page #header { height: 30px; }
   font-weight: bold;
 }
 
-#comments {padding: 20px 20px; color: #474848; background-color: #E9E9E9;}
+#comments {padding: 10px 20px; color: #474848; background-color: #E9E9E9;}
 #comments p {margin: 0 0 .3em 0;}
-#comments h2 {font-size: 18px; font-weight: bold; text-shadow: 0px 1px 0px #fff; margin-bottom: 10px;}
+#comments h2, #directive h3 {font-size: 18px; font-weight: bold; text-shadow: 0px 1px 0px #fff; margin: 15px 0 10px;}
 #comments .date, #sidebar .date {color: #999999;}
 #comments .event {margin: 0 0 10px; clear: both;}
 #comments .commenter_thumb {height: 48px; width: 48px; margin-right: 15px; background-color: #333; float: left;}
@@ -153,17 +154,42 @@ body#page #header { height: 30px; }
   text-shadow: none;
   -moz-box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
   box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);}
+  
+input + p.descr {
+  color: #999;
+  margin-top: -12px;
+}
+
+.signuperror {
+  margin-top: 10px;
+  color: #FF763C;
+}
 
 /* = for join and login pages = */
-.squad_details {margin: 0 0 20px;}
+.squad_details {margin: 0 0 10px;}
 .squad_details h2 {margin: 0 0 4px; font-size: 24px; font-weight: bold;}
-.squad_details h4 {font-weight: normal;}
+.squad_details h4 {font-weight: normal; color: #999 !important;}
 
 .squad_details img {
   float: left;
   height: 64px;
   background-color: #bbb;
   margin-right: 10px;
+}
+
+#joinform {
+  display: block;
+  float: left;
+  width: 230px;
+}
+
+.FB_auth {
+  width: 230px;
+  min-height: 100px;
+  float: left;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 1px solid #E8E8E8;
 }
 
 
