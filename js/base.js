@@ -125,9 +125,16 @@ go.push({
         'stream': current_stream
       }, go.onwards );
   },
+
+  verify_email: function(){
+    $.post('/api/me/verifications', {
+        'url': 'email:' + This.form_data.email,
+        'stream': current_stream
+      }, go.onwards );
+  },
   
   add_self: function() {
-    $.post('/api/s'+current_stream+'/members', go.onwards);
+    $.post('/api/s'+current_stream+'/members', This.form_data || {}, go.onwards);
   },
   
   redirect_squad_page: function(page) {
