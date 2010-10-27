@@ -155,7 +155,7 @@ body#page #header { height: 30px; }
   -moz-box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
   box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);}
   
-input + p.descr {
+#content input + p.descr {
   color: #999;
   margin-top: -12px;
 }
@@ -178,14 +178,21 @@ input + p.descr {
 }
 
 #joinform {
-  display: block;
   float: left;
   width: 230px;
 }
 
+.join_lio {
+  display: block;
+  width: 150px;
+  float: left;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .FB_auth {
   width: 230px;
-  min-height: 100px;
+  min-height: 60px;
   float: left;
   margin-left: 20px;
   padding-left: 20px;
