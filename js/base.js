@@ -11,6 +11,48 @@ function watch_location(){
   });
 }
 
+function table(cols, data, func, blank_msg){
+  var table = $('<table/>');
+  table.append(tag('tr', cols.map(function(col){ return tag('th', col); }).join('')));
+  $.each(data, function(){
+    var row_data = this;
+    $.each(func(row_data), function() {
+      var row = $(tag('tr', this.map(function(col){ return tag('td', col); }).join('')));
+      row.data('row_data', row_data);
+      table.append(row);
+    });
+  });
+  if (data.length == 0) {
+    blank_msg = blank_msg || '';
+    table.append('<tr><td colspan="'+cols.length+'">'+blank_msg+'</td></tr>');
+  }
+  return table;
+}
+
+function tag(name, attrs) {
+  var content = '';
+  if (attrs == null) attrs = '';
+  if (typeof attrs == "string" && attrs.length) attrs = {content: attrs};
+  if (name.indexOf('.') >= 0) {
+    var words = name.split('.');
+    name = words[0];
+    attrs['class'] = words.slice(1).join(' ');
+  }
+  if (name == 'a' && !attrs.href) attrs.href = '#';
+  if (attrs.content) {
+    content = attrs.content;
+    delete attrs.content;
+  }
+  if (attrs.cls) {
+    attrs['class'] = attrs.cls;
+    delete attrs.cls;
+  }
+  var pairs = [];
+  $.each(attrs, function(i, obj){ pairs.push({key:i, val: obj}); });
+  var attr = pairs.map(function(x){ return x.key + "=\"" + x.val + "\""; }).join(' ');
+  return "<" + name + " " + attr + ">" + content + "</" + name + ">";
+}
+
 
 go.push({
   email_regex: function() {
