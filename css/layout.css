@@ -27,6 +27,7 @@ h1, h2, h3, h4, h5, h6 {line-height: 1.1;}
 p {margin: 0 0 .5em 0;}
 a {color: #0066CC; text-decoration: none;}
 hr {height: 1px; background-color: #E9EAEC; color: #E9EAEC; border: none; padding: 0;margin: 1em 0;}
+hr.darker, .modal hr {background-color: #999; color: #999;}
 ul, ol {margin-left: 1em; padding-left: 0;}
 
 input[type="text"], input[type="password"], input[type="tel"], input.text, input.title, textarea {font-size: 100%; font-family: inherit; margin: 2px 4px 15px 0; padding: 2px; width: 96%;}
