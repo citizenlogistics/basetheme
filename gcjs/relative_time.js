@@ -12,7 +12,9 @@ var month3LetterNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
 
 function $mon_date(ts) {
   var x = new Date(ts * 1000);
-  return month3LetterNames[x.getMonth()] + " " + x.getDate();
+  var hours_delta = (Math.floor(new Date().getTime() / 1000) - Number(ts)) / (60*60);
+  var year = hours_delta > 300*24 ? ' ' + x.getFullYear() : '';
+  return month3LetterNames[x.getMonth()] + " " + x.getDate() + year;
 }
 
 function $is_today(ts) {
