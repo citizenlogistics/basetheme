@@ -137,7 +137,7 @@ Event = {
   },
 
   color: function(ev){
-    if ($w(ev.atype).intersect($w('viewer timeout switched chat')).length > 0) return "invisible";
+    if ($w(ev.atype || '').intersect($w('viewer timeout switched chat')).length > 0) return "invisible";
     if ($w('assigned msg pm').indexOf(ev.atype) >= 0) return "purple";
     if ($w('error warning').indexOf(ev.atype) >= 0) return "red";
     if ($w('reported').indexOf(ev.atype) >= 0) return "green";
