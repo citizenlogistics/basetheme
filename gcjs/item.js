@@ -2,6 +2,7 @@ var most_recent_item = null;
 var item_children = {};
 var fuzzfactor = {};
 var seen = {};
+var seenct = {};
 
 function make_fuzzfactor(acc){
   var factor = 0.005;
@@ -22,10 +23,13 @@ function item(city, tag, title, thumb_url, lat, lng, atags, latch, comm, req, x)
     // spread out items that are geocoded to a single common city/zip point
     var pos = lat+","+lng;
     if (seen[pos] && seen[pos] != tag){
+      seenct[pos] = (seenct[pos]||0) + 1;
       if (!fuzzfactor[tag]) fuzzfactor[tag] = make_fuzzfactor(x.acc);
       lat = Number(lat) + fuzzfactor[tag][0];
       lng = Number(lng) + fuzzfactor[tag][1];
     } else seen[pos] = tag;
+    
+    var hidden = (seenct[pos] > 40);
 
     var via_sys = (comm && comm.split(/ /)[3] || '');
     return most_recent_item = Resource.add_or_update(tag, {
@@ -37,6 +41,7 @@ function item(city, tag, title, thumb_url, lat, lng, atags, latch, comm, req, x)
       atags: atags,
       latch: latch,
       comm: comm,
+      hidden: hidden,
       req: req,
       via_sys: via_sys
     }, x);    
