@@ -9,6 +9,23 @@ function watch_location(){
   });
 }
 
+function reload_gcu_cookie(){
+  var gcu = eval('('+($.cookie('gcu')||'{}')+')');
+  $.extend(window, gcu);
+  
+  if (!gcu['on_streams']) return;
+  if (!window.current_stream) return;
+  current_squad = window.on_streams[current_stream];
+  if (!current_squad) return;
+
+  $.each(current_squad, function(k, v){ window["current_stream_" + k] = v; });
+  window.current_stream_thumb       = window.current_stream_thumb_url;
+  window.current_stream_systems     = window.current_stream_systems_letters;
+  window.stream_role = current_squad['role'];
+  window.stream_names = {};
+  $.each(guser['on_streams'], function(id, obj){ window.stream_names[id] = obj.name; });
+}
+
 function table(cols, data, func, blank_msg){
   var table = $('<table/>');
   table.append(tag('tr', cols.map(function(col){ return tag('th', col); }).join('')));
@@ -63,14 +80,13 @@ go.push({
   },
   
   complete_auth_from_cookie: function(){
-    var user = $.cookie('gcuser');
-    if (user) $.extend(window, eval('(' + user + ')'));
+    reload_gcu_cookie();
     go('#auth_complete');
   },
 
   auth_complete: function() {
     // The contents of This.user is deprecated.  It should be replaced 
-    // with the contents of the gcuser cookie, or maybe the user item.
+    // with the contents of the gcu cookie, or maybe the user item.
     This.user = This.user || {};
     $.extend(This.user, {
       tag: window.authority || 'pAnon', title: window.user_name, posx: 38, logged_in: true
@@ -120,8 +136,7 @@ go.push({
   // User account from FB needs to be synced with account in GX
   facebook_auth_in_gx: function() {
     $.post('/api/me/contact_methods', {'url': 'facebook:' + This.facebook_uid}, function(){
-      var user = $.cookie('gcuser');
-      if (user) $.extend(window, eval('(' + user + ')'));
+      reload_gcu_cookie();
       if (!This.login_after_page_load) window.location.reload();
       else {
         if (This.tool == 'login') go('tool=');
