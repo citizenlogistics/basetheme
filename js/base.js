@@ -1,6 +1,3 @@
-// var user = $.cookie('gcuser');
-// if (user) $.extend(window, eval('(' + user + ')'));
-
 function watch_location(){
   return navigator.geolocation && navigator.geolocation.watchPosition(function(position) {
     $.get('/api/checkin', {
@@ -8,6 +5,7 @@ function watch_location(){
       lat: position.coords.latitude,
       lng: position.coords.longitude
     });
+    $('body').addClass('located');
   });
 }
 
