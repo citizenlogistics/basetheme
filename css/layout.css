@@ -97,6 +97,9 @@ body#page #header { height: 30px; }
 
 #content {margin:0 auto; width: 950px;}
 
+#content input[type="text"], #content input[type="password"], #content input[type="tel"], #content input.text, #content input.title, #content textarea {font-size: 100%; font-family: inherit; margin: 2px 4px 8px 0; padding: 2px; width: 96%;}
+
+
 .single_column {margin: 0 auto; width:550px; border-top: solid 2px black; }
 
 #main_column {width:600px; float: left; background: #E9E9E9;}
@@ -159,8 +162,6 @@ body#page #header { height: 30px; }
   
 #content input + p.descr {
   color: #999;
-  margin-top: -12px;
-  background-color: red;
 }
 
 .signuperror {
@@ -211,11 +212,12 @@ ul.bullet_list li {margin: 0 0 .6em;}
 /* =========================== */
 /* = create squad page       = */
 /* =========================== */
-.create_squad label {display: block; clear: both;}
+.create_squad label {display: block; clear: both; margin-top: 10px;}
 .create_squad .descr {color: #999;}
 .create_squad div.descr {width: 150px; float:left;
-line-height:1.2; margin: 2px 0 0 5px;}
+line-height:1.2; margin: 2px 0 0 7px;}
 .create_squad #create_squad textarea {display: block; width: 290px; float: left;}
+.squad_descr {float: left;}
 .create_squad #create_squad button {display: block; clear: both; margin: 5px 0 10px 0;}
 
 
