@@ -209,6 +209,23 @@ body#page #header { height: 30px; }
 ul.bullet_list {margin-top: 1em}
 ul.bullet_list li {margin: 0 0 .6em;}
 
+
+/* =========================== */
+/* = mobile static pages     = */
+/* =========================== */
+
+body.mobile #content {width: auto;}
+body.mobile #content #main_column {float: none; width: auto;}
+body.mobile #content #sidebar {width: auto; float: none; margin-top: 20px; margin-right: 15px;}
+
+body.mobile .modal {width: auto;}
+body.mobile .modal #login_form {float: none;}
+body.mobile .modal .sidebar {float: none; padding-left: 0;}
+body.mobile #directive #organizer_thumb {height: 48px; width: 48px; margin-right: 10px;}
+body.mobile #comments .commenter_thumb {height: 24px; width: 24px; margin-right: 10px;}
+body.mobile #directive #directive_col {width: auto;}
+
+
 /* =========================== */
 /* = create squad page       = */
 /* =========================== */
