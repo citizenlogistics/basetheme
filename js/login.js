@@ -9,6 +9,13 @@ $.extend(String.prototype, {
 });
 
 go.push({
+  process_login: function() {
+    return $.post_with_squad('/login', This.form_data, function() {
+/*       go('#complete_auth_from_cookie'); */
+      go.onwards();
+    });
+  },
+
   login_form_submitted: function(data) {
     return $.post_with_squad('/login', data, function() {
       go('#complete_auth_from_cookie');

@@ -213,6 +213,10 @@ body#page #header { height: 30px; }
   border-left: 1px solid #E8E8E8;
 }
 
+.login_page #login_form {float: left; width: 48%; margin: 25px 0 0 0;}
+.login_page #login_form p {margin: 15px 0 5px 0;}
+.login_page .sidebar {float: left; width: 48%; margin: 25px 0 0 20px;}
+
 
 .invite_tool {margin: 20px 0;}
 #mobile_form {margin: 20px 0;}

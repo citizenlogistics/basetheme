@@ -200,6 +200,7 @@ go.push({
   // data //
   viewer_url: function() { return '/'+current_stream; },
   invite_url: function() { return '/'+current_stream+'/signup'; },
+  forgot_password_url: function() { return '/'+current_stream+'/forgot_password'; },
   join_url: function() { return '/'+current_stream+'/join'; }
 });
 
