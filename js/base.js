@@ -1,3 +1,76 @@
+function reload_user_info(login, password){
+  var squad_id = window.location.href.split('/')[3];
+  if (squad_id.match(/start|login/)) squad_id = null;
+  if (squad_id) squad_id = 's' + squad_id;
+  var invite_code = window.location.hash && window.location.hash.slice(1);
+  $.ajax({ 
+    async: false, 
+    url: '/api/all',
+    dataType: 'script',
+    data: {
+      login:login, 
+      password:password,
+      ids: ['me', squad_id, invite_code].join(','),
+      callback: 'load_user_squad_and_invite'
+    }
+  });
+}
+
+function load_user_squad_and_invite(all){
+  load_current_user(all[0]);
+  load_current_squad(all[1]);
+  load_current_invite(all[2]);
+  go.onwards();
+}
+
+function load_current_user(user){
+  window.stream_names = {};
+  window.squad_roles  = {};
+  window.current_user = {};
+  if (!user.id) return;  
+  window.current_user = user;
+  
+  // this is for legacy javascript code
+  // gone are: mobile_sent_ts, email_stage, mobile_stage, session_status
+  window.authority   = user.id;
+  window.pw_set      = user.has_password;
+  window.user_email  = user.email;
+  window.user_mobile = user.phone;
+  window.user_name   = user.name;
+  window.user_bio    = user.bio;
+  window.user_loc    = user.loc;
+  window.user_thumb  = user.thumb_url;
+  
+  $.each(user.squad_roles, function(entry){ 
+    var squad_id = entry[0];
+    var name = entry[1];
+    var role = entry[2];    
+    window.stream_names[squad_id] = name;
+    window.squad_roles[squad_id]  = role;
+  });
+}
+
+function load_current_squad(squad){
+  if (!squad.id) return;
+  window.current_squad = {};
+  
+  // new style javascript
+  window.current_squad = squad;
+  
+  // for legacy javascript
+  window.current_stream = squad.id;  
+  window.stream_role = window.squad_roles[squad.id];
+  $.each(squad, function(k, v){ window["current_stream_" + k] = v; });
+  window.current_stream_thumb   = squad.thumb_url;
+  window.current_stream_systems = squad.systems_letters;
+}
+
+function load_current_invite(invite){}
+
+
+reload_user_info();
+
+
 function watch_location(){
   return navigator.geolocation && navigator.geolocation.watchPosition(function(position) {
     $.get('/api/checkin', {
@@ -59,18 +132,16 @@ go.push({
   password_regex: function() { return new RegExp(/[^\s]{5,}/); },
   
   start: function(){
-    if (!window.dontloadcookieonstart) go('#complete_auth_from_cookie');
+    go('#auth_complete');
   },
   
   complete_auth_from_cookie: function(){
-    var user = $.cookie('gcuser');
-    if (user) $.extend(window, eval('(' + user + ')'));
     go('#auth_complete');
   },
 
   auth_complete: function() {
     // The contents of This.user is deprecated.  It should be replaced 
-    // with the contents of the gcuser cookie, or maybe the user item.
+    // with the contents of the gcu cookie, or maybe the user item.
     This.user = This.user || {};
     $.extend(This.user, {
       tag: window.authority || 'pAnon', title: window.user_name, posx: 38, logged_in: true
@@ -119,12 +190,9 @@ go.push({
 
   // User account from FB needs to be synced with account in GX
   facebook_auth_in_gx: function() {
-    $.post('/api/me/contact_methods', {'url': 'facebook:' + This.facebook_uid}, function(){
-      var user = $.cookie('gcuser');
-      if (user) $.extend(window, eval('(' + user + ')'));
-      if (This.tool == 'login') go('tool=');
-      go.dispatch('did_login') || window.location.reload();
-    });
+    reload_user_info();
+    if (This.tool == 'login') go('tool=');
+    go.dispatch('did_login') || window.location.reload();
   },
 
   twitter_login: function() {
@@ -208,5 +276,4 @@ This.user = { tag: 'pAnon'};
 
 
 // back compat
-var fgo = go.f;
 go.push(window.App = {});
