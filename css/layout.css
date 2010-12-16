@@ -146,8 +146,9 @@ body#page #header { height: 30px; }
 
 /* = sidebar = */
 #content #sidebar {width: 190px; float: left; margin: 15px 0 0 15px;}
+#content #sidebar .box {background: #E9E9E9; padding: 12px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
 #content #sidebar h2 {font-size: 18px; font-weight: bold; text-shadow: 0px 1px 0px #fff; margin-bottom: 6px;}
-#content #sidebar .box {background: #E9E9E9; padding: 10px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
+#content #sidebar p { margin: .3em 0 1em 0; }
 #content #sidebar textarea {width: 92%; height: auto;}
 #content #sidebar #recent_messages p {margin: 0;}
 #content #sidebar #recent_messages .comment {overflow-y: auto; max-height: 200px; padding: 5px 0;}
@@ -170,7 +171,7 @@ body#page #header { height: 30px; }
   -moz-box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
   box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);}
   
-#content input + p.descr {
+#content .descr {
   color: #999;
 }
 
@@ -191,10 +192,14 @@ body#page #header { height: 30px; }
   margin-right: 10px;
 }
 
+.formrow {margin: 0 0 .4em 0}
+
 #joinform {
   float: left;
   width: 230px;
 }
+
+#mobile_form {width: 230px;}
 
 .join_lio {
   display: block;
@@ -216,7 +221,6 @@ body#page #header { height: 30px; }
 .login_page #login_form {float: left; width: 48%; margin: 25px 0 0 0;}
 .login_page #login_form p {margin: 15px 0 5px 0;}
 .login_page .sidebar {float: left; width: 48%; margin: 25px 0 0 20px;}
-
 
 .invite_tool {margin: 20px 0;}
 #mobile_form {margin: 20px 0;}
