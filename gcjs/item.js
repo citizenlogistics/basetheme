@@ -24,9 +24,9 @@ function item(city, tag, title, thumb_url, lat, lng, atags, latch, comm, req, x)
     var pos = lat+","+lng;
     if (seen[pos] && seen[pos] != tag){
       seenct[pos] = (seenct[pos]||0) + 1;
-      if (!fuzzfactor[tag]) fuzzfactor[tag] = make_fuzzfactor(x.acc);
-      lat = Number(lat) + fuzzfactor[tag][0];
-      lng = Number(lng) + fuzzfactor[tag][1];
+      if (!fuzzfactor[tag + pos]) fuzzfactor[tag + pos] = make_fuzzfactor(x.acc);
+      lat = Number(lat) + fuzzfactor[tag + pos][0];
+      lng = Number(lng) + fuzzfactor[tag + pos][1];
     } else seen[pos] = tag;
     
     var hidden = (seenct[pos] > 40);
