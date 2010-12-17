@@ -5,7 +5,7 @@ var seen = {};
 var seenct = {};
 
 function make_fuzzfactor(acc){
-  var factor = 0.005;
+  var factor = 0.0005;
   if (acc == 'zip' || acc == 'city') factor = 0.05;
   var xfuzz = Math.random() * factor - factor/2.0;
   var yfuzz = Math.random() * factor - factor/2.0;
