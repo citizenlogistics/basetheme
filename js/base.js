@@ -67,6 +67,7 @@ function load_current_squad(squad){
 
 function load_current_invite(invite){
   if (!(invite && invite.id)) return;
+  window.current_invite = {};
   window.current_invite = invite;
 }
 
