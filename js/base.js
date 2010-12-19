@@ -250,7 +250,7 @@ go.push({
 
   display_invite_info: function() {
     invite = window.current_invite;
-    if (!(valid_invite() && invite.role)) {
+    if (!(go.dispatch("valid_invite") && invite.role)) {
       return "";
     }
     return " as a(n) " + invite.role;
