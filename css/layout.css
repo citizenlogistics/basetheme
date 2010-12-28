@@ -33,7 +33,6 @@ ul, ol {margin-left: 1em; padding-left: 0;}
 input[type="text"], input[type="password"], input[type="tel"], input.text, input.title, textarea {font-size: 100%; font-family: inherit; margin: 2px 4px 15px 0; padding: 2px; width: 96%;}
 textarea {width: 95%; height: auto;}
 
-
 /* =========================== */
 /* = generally useful        = */
 /* =========================== */
@@ -100,6 +99,9 @@ body#page #header { height: 30px; }
 #content input[type="text"], #content input[type="password"], #content input[type="tel"], #content input.text, #content input.title, #content textarea {font-size: 100%; font-family: inherit; margin: 2px 4px 8px 0; padding: 2px; width: 96%;}
 
 
+#content input.half, #content input[type="text"].half, #content input[type="password"].half, #content input[type="tel"].half, #content input.text.half, #content input.title.half, #content textarea.half {font-size: 100%; font-family: inherit; margin: 2px 4px 15px 0; padding: 2px; width: 50%;}
+#content textarea.half {width: 50%; height: auto;}
+
 .single_column {margin: 0 auto; width:550px; border-top: solid 2px black; }
 
 #content.onecolumn #main_column {float: none; margin: 0 auto;}
@@ -126,7 +128,6 @@ body#page #header { height: 30px; }
 #primary #organizer_thumb {float: left; height: 72px; width: 72px;}
 #primary #directive_col {float: left; width: 400px;}
 #primary #organizer_thumb {margin-right: 15px;}
-#primary textarea {width: 98%; height: auto;}
 #primary h3.thanks {font-size: 22px; margin: 15px 0 0 0;}
 #primary .status {
   color: #FF763C;
@@ -150,6 +151,11 @@ body#page #header { height: 30px; }
 #content #sidebar h2 {font-size: 18px; font-weight: bold; text-shadow: 0px 1px 0px #fff; margin-bottom: 6px;}
 #content #sidebar p { margin: .3em 0 1em 0; }
 #content #sidebar textarea {width: 92%; height: auto;}
+
+#content #sidebar hr { color: #B1B1B1; background-color: #B1B1B1; margin: 4px 0;}
+
+#content #sidebar .callouts p {margin-bottom: 0;}
+
 #content #sidebar #recent_messages p {margin: 0;}
 #content #sidebar #recent_messages .comment {overflow-y: auto; max-height: 200px; padding: 5px 0;}
 #content #sidebar #recent_messages .pm {margin: 0 0 10px 0;}
@@ -247,13 +253,19 @@ body.mobile #primary #directive_col {width: auto;}
 /* =========================== */
 /* = create squad page       = */
 /* =========================== */
+#page .create_squad h3 {color: #FF763C}
+
 .create_squad label {display: block; clear: both; margin-top: 10px;}
 .create_squad .descr {color: #999;}
 .create_squad div.descr {width: 150px; float:left;
 line-height:1.2; margin: 2px 0 0 7px;}
-.create_squad #create_squad textarea {display: block; width: 290px; float: left;}
+.create_squad #create_squad textarea {display: block; width: 330px; float: left;}
 .squad_descr {float: left;}
 .create_squad #create_squad button {display: block; clear: both; margin: 5px 0 10px 0;}
+
+.whojoins div {display: block;float: left; width: 40%; margin: 5px 0px 0 0;}
+.whojoins p {margin-left: 1.4em;}
+
 
 
 /* =========================== */
