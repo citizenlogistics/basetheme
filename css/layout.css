@@ -36,11 +36,11 @@ textarea {width: 95%; height: auto;}
 /* =========================== */
 /* = generally useful        = */
 /* =========================== */
-.nobold {font-weight: normal;}
-.first {margin-left:0;padding-left:0;}
-.last {margin-right:0;padding-right:0;}
-.top {margin-top:0;padding-top:0;}
-.bottom {margin-bottom:0;padding-bottom:0;}
+.nobold {font-weight: normal !important; }
+.first {margin-left:0 !important;padding-left:0 !important;}
+.last {margin-right:0 !important; padding-right:0 !important;}
+.top {margin-top:0 !important; padding-top:0 !important;}
+.bottom {margin-bottom:0 !important; padding-bottom:0 !important;}
 
 
 /* ===================== */
