@@ -191,7 +191,7 @@ body#page #header { height: 30px; }
     box-shadow:none
 }
 
-#content .descr {
+.descr {
   color: #999;
 }
 
