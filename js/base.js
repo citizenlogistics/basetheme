@@ -228,6 +228,7 @@ go.push({
   // signup specific
   
   verify_mobile: function(){
+    if (!This.form_data.mobile || window.user_mobile) return go.onwards();
     $.post('/api/me/verifications', {
         'url': 'tel:' + This.form_data.mobile,
         'stream': current_stream
