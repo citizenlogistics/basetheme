@@ -165,7 +165,7 @@ body#page #header { height: 30px; }
 #content .button {
   color: #fff;
   text-decoration: none;
-  background: #9D9D9D;
+  background: #FF763C;
   font-weight: bold;
   border: none;
   padding: 4px 15px;
@@ -175,8 +175,15 @@ body#page #header { height: 30px; }
   border-radius: 5px;
   text-shadow: none;
   -moz-box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
-  box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);}
-  
+  -webkit-box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
+
+   background-image: -webkit-gradient(
+     linear, 0% 0%, 0% 25%,
+     from(rgba(255,255,200,0.5)),
+     to(rgba(255,255,200,0.0)));
+}
+
 #content .descr {
   color: #999;
 }
@@ -206,14 +213,6 @@ body#page #header { height: 30px; }
 }
 
 #mobile_form {width: 230px;}
-
-.join_lio {
-  display: block;
-  width: 150px;
-  float: left;
-  font-size: 18px;
-  font-weight: bold;
-}
 
 .FB_auth {
   width: 230px;
