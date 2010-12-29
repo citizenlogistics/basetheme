@@ -66,7 +66,7 @@ function load_current_squad(squad){
 }
 
 function load_current_invite(invite){
-  if (!(invite && invite.id)) return;
+  if (!(invite && invite.squad_id)) return;
   window.current_invite = {};
   window.current_invite = invite;
 }
@@ -241,20 +241,15 @@ go.push({
       }, go.onwards );
   },
 
-  valid_invite: function() {
+  display_invite_info: function() {
     invite = window.current_invite;
     squad = window.current_squad;
     // TODO(misha): Ask Joe if "id" is the attribute name of the squad id.
-    return invite && invite.squad_id && squad && squad.id &&
-	invite.squad_id == squad.id;
-  },
-
-  display_invite_info: function() {
-    invite = window.current_invite;
-    if (!(go.dispatch("valid_invite") && invite.role)) {
+    if (invite && squad && invite.squad_id == squad.id && invite.role) {
+      return " as an " + invite.role;
+    } else {
       return "";
     }
-    return " as a(n) " + invite.role;
   },
   
   add_self: function() {
