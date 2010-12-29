@@ -2,7 +2,7 @@ function reload_user_info(login, password){
   var squad_id = window.location.href.split('/')[3];
   if (squad_id.match(/start|login/)) squad_id = null;
   if (squad_id) squad_id = 's' + squad_id;
-  var invite_code = window.location.hash && window.location.hash.slice(1);
+  window.invite_code = window.location.hash && window.location.hash.slice(1);
   $.ajax({ 
     async: false, 
     url: '/api/all',
@@ -10,7 +10,7 @@ function reload_user_info(login, password){
     data: {
       login:login, 
       password:password,
-      ids: ['me', squad_id, invite_code].join(','),
+      ids: ['me', squad_id, window.invite_code].join(','),
       callback: 'load_user_squad_and_invite'
     }
   });
@@ -258,7 +258,9 @@ go.push({
   },
   
   add_self: function() {
-    $.post('/api/s'+current_stream+'/members', This.form_data || {}, go.onwards);
+    This.form_data = This.form_data || {};
+    if (window.invite_code) This.form_data.invite_code = window.invite_code;
+    $.post('/api/s'+current_stream+'/members', This.form_data, go.onwards);
   },
   
   redirect_squad_page: function(page) {
