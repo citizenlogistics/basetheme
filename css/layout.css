@@ -184,6 +184,13 @@ body#page #header { height: 30px; }
      to(rgba(255,255,200,0.0)));
 }
 
+#content .button.disabled {
+    background: #999;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none
+}
+
 #content .descr {
   color: #999;
 }
