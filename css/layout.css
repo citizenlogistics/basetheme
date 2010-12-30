@@ -147,14 +147,14 @@ body#page #header { height: 30px; }
 
 /* = sidebar = */
 #content #sidebar {width: 190px; float: left; margin: 15px 0 0 15px;}
-#content #sidebar .box {background: #E9E9E9; padding: 12px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
+#content #sidebar .box {color: #474848; background: #CCCCCC; padding: 12px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; margin-bottom: 1em;}
 #content #sidebar h2 {font-size: 18px; font-weight: bold; text-shadow: 0px 1px 0px #fff; margin-bottom: 6px;}
 #content #sidebar p { margin: .3em 0 1em 0; }
 #content #sidebar textarea {width: 92%; height: auto;}
 
-#content #sidebar hr { color: #B1B1B1; background-color: #B1B1B1; margin: 4px 0;}
+#content #sidebar hr { color: #C0C0C0; background-color: #B1B1B1; margin: 4px 0;}
 
-#content #sidebar .callouts p {margin-bottom: 0;}
+#content #sidebar .callouts p {margin-bottom: 0; line-height: 1.2}
 
 #content #sidebar #recent_messages p {margin: 0;}
 #content #sidebar #recent_messages .comment {overflow-y: auto; max-height: 200px; padding: 5px 0;}
@@ -263,14 +263,15 @@ body.mobile #primary #directive_col {width: auto;}
 
 .create_squad label {display: block; clear: both; margin-top: 10px;}
 .create_squad .descr {color: #999;}
-.create_squad div.descr {width: 150px; float:left;
-line-height:1.2; margin: 2px 0 0 7px;}
+.create_squad div.descr {width: 195px; float:left;
+line-height:1.2; margin: 2px 0 0 5px;}
 .create_squad #create_squad textarea {display: block; width: 330px; float: left;}
 .squad_descr {float: left;}
 .create_squad #create_squad button {display: block; clear: both; margin: 5px 0 10px 0;}
 
-.whojoins div {display: block;float: left; width: 40%; margin: 5px 0px 0 0;}
-.whojoins p {margin-left: 1.4em;}
+.whojoins label {margin-bottom: 5px;}
+.whojoins div {margin: 0px 0px 3px 0;}
+
 
 
 
