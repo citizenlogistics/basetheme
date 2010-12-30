@@ -227,6 +227,20 @@ go.push({
 
   // signup specific
   
+  watch_location: function() {
+    navigator.geolocation && navigator.geolocation.watchPosition(function(position) {
+      $.get('/api/checkin', {
+        no_poll: true, // don't pull down messages, since there's no message handler here
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      });
+      $('body').addClass('located');
+      window.user_loc = position.coords.latitude + ", " + position.coords.longitude;
+      $('.magic').paint();
+    });
+  },
+  
+  
   verify_mobile: function(){
     if (!This.form_data.mobile || window.user_mobile) return go.onwards();
     $.post('/api/me/verifications', {
