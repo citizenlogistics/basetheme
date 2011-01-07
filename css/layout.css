@@ -33,15 +33,14 @@ ul, ol {margin-left: 1em; padding-left: 0;}
 input[type="text"], input[type="password"], input[type="tel"], input.text, input.title, textarea {font-size: 100%; font-family: inherit; margin: 2px 4px 15px 0; padding: 2px; width: 96%;}
 textarea {width: 95%; height: auto;}
 
-
 /* =========================== */
 /* = generally useful        = */
 /* =========================== */
-.nobold {font-weight: normal;}
-.first {margin-left:0;padding-left:0;}
-.last {margin-right:0;padding-right:0;}
-.top {margin-top:0;padding-top:0;}
-.bottom {margin-bottom:0;padding-bottom:0;}
+.nobold {font-weight: normal !important; }
+.first {margin-left:0 !important;padding-left:0 !important;}
+.last {margin-right:0 !important; padding-right:0 !important;}
+.top {margin-top:0 !important; padding-top:0 !important;}
+.bottom {margin-bottom:0 !important; padding-bottom:0 !important;}
 
 
 /* ===================== */
@@ -100,6 +99,9 @@ body#page #header { height: 30px; }
 #content input[type="text"], #content input[type="password"], #content input[type="tel"], #content input.text, #content input.title, #content textarea {font-size: 100%; font-family: inherit; margin: 2px 4px 8px 0; padding: 2px; width: 96%;}
 
 
+#content input.half, #content input[type="text"].half, #content input[type="password"].half, #content input[type="tel"].half, #content input.text.half, #content input.title.half, #content textarea.half {font-size: 100%; font-family: inherit; margin: 2px 4px 15px 0; padding: 2px; width: 50%;}
+#content textarea.half {width: 50%; height: auto;}
+
 .single_column {margin: 0 auto; width:550px; border-top: solid 2px black; }
 
 #content.onecolumn #main_column {float: none; margin: 0 auto;}
@@ -126,7 +128,6 @@ body#page #header { height: 30px; }
 #primary #organizer_thumb {float: left; height: 72px; width: 72px;}
 #primary #directive_col {float: left; width: 400px;}
 #primary #organizer_thumb {margin-right: 15px;}
-#primary textarea {width: 98%; height: auto;}
 #primary h3.thanks {font-size: 22px; margin: 15px 0 0 0;}
 #primary .status {
   color: #FF763C;
@@ -146,9 +147,15 @@ body#page #header { height: 30px; }
 
 /* = sidebar = */
 #content #sidebar {width: 190px; float: left; margin: 15px 0 0 15px;}
+#content #sidebar .box {color: #474848; background: #CCCCCC; padding: 12px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; margin-bottom: 1em;}
 #content #sidebar h2 {font-size: 18px; font-weight: bold; text-shadow: 0px 1px 0px #fff; margin-bottom: 6px;}
-#content #sidebar .box {background: #E9E9E9; padding: 10px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
+#content #sidebar p { margin: .3em 0 1em 0; }
 #content #sidebar textarea {width: 92%; height: auto;}
+
+#content #sidebar hr { color: #C0C0C0; background-color: #B1B1B1; margin: 4px 0;}
+
+#content #sidebar .callouts p {margin-bottom: 0; line-height: 1.2}
+
 #content #sidebar #recent_messages p {margin: 0;}
 #content #sidebar #recent_messages .comment {overflow-y: auto; max-height: 200px; padding: 5px 0;}
 #content #sidebar #recent_messages .pm {margin: 0 0 10px 0;}
@@ -158,7 +165,7 @@ body#page #header { height: 30px; }
 #content .button {
   color: #fff;
   text-decoration: none;
-  background: #9D9D9D;
+  background: #FF763C;
   font-weight: bold;
   border: none;
   padding: 4px 15px;
@@ -168,9 +175,23 @@ body#page #header { height: 30px; }
   border-radius: 5px;
   text-shadow: none;
   -moz-box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
-  box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);}
-  
-#content input + p.descr {
+  -webkit-box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
+
+   background-image: -webkit-gradient(
+     linear, 0% 0%, 0% 25%,
+     from(rgba(255,255,200,0.5)),
+     to(rgba(255,255,200,0.0)));
+}
+
+#content .button.disabled {
+    background: #999;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none
+}
+
+.descr {
   color: #999;
 }
 
@@ -191,18 +212,14 @@ body#page #header { height: 30px; }
   margin-right: 10px;
 }
 
+.formrow {margin: 0 0 .4em 0}
+
 #joinform {
   float: left;
   width: 230px;
 }
 
-.join_lio {
-  display: block;
-  width: 150px;
-  float: left;
-  font-size: 18px;
-  font-weight: bold;
-}
+#mobile_form {width: 230px;}
 
 .FB_auth {
   width: 230px;
@@ -216,7 +233,6 @@ body#page #header { height: 30px; }
 .login_page #login_form {float: left; width: 48%; margin: 25px 0 0 0;}
 .login_page #login_form p {margin: 15px 0 5px 0;}
 .login_page .sidebar {float: left; width: 48%; margin: 25px 0 0 20px;}
-
 
 .invite_tool {margin: 20px 0;}
 #mobile_form {margin: 20px 0;}
@@ -243,13 +259,20 @@ body.mobile #primary #directive_col {width: auto;}
 /* =========================== */
 /* = create squad page       = */
 /* =========================== */
+#page .create_squad h3 {color: #FF763C}
+
 .create_squad label {display: block; clear: both; margin-top: 10px;}
 .create_squad .descr {color: #999;}
-.create_squad div.descr {width: 150px; float:left;
-line-height:1.2; margin: 2px 0 0 7px;}
-.create_squad #create_squad textarea {display: block; width: 290px; float: left;}
+.create_squad div.descr {width: 195px; float:left;
+line-height:1.2; margin: 2px 0 0 5px;}
+.create_squad #create_squad textarea {display: block; width: 330px; float: left;}
 .squad_descr {float: left;}
 .create_squad #create_squad button {display: block; clear: both; margin: 5px 0 10px 0;}
+
+.whojoins label {margin-bottom: 5px;}
+.whojoins div {margin: 0px 0px 3px 0;}
+
+
 
 
 /* =========================== */
