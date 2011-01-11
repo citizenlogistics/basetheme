@@ -51,7 +51,7 @@ function load_current_user(user){
 }
 
 function load_current_squad(squad){
-  if (!squad.id) return;
+  if (!squad || !squad.id) return;
   window.current_squad = {};
   
   // new style javascript
