@@ -109,6 +109,7 @@ body#page #header { height: 30px; }
 
 
 #main_column {width:600px; float: left; background: #E9E9E9;}
+body.wide #main_column {width:800px;}
 
 #sys_confirmation {background: #FFFDDA; padding: 15px 20px;}
 #sys_confirmation img {height: 32px; width: 32px; background: #777; float: left; margin-right: 10px;}
