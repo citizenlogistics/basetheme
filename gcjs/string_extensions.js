@@ -16,7 +16,8 @@ $.extend(String.prototype, {
   },
   
   resource: function(){
-    return this.resource_class().by_tag[this];
+    var c = this.resource_class();
+    if (c) return c.by_tag[this];
   },
   
   resource_type: function(){
@@ -27,11 +28,13 @@ $.extend(String.prototype, {
     if (this.startsWith('l')) return 'Landmark';
     // city has no resource class, but may be assigned to This.item
     if (this.startsWith('City__')) return null;
-    throw 'unknown resource type for ' + this;
+    // throw 'unknown resource type for ' + this;
+    return null;  // there are unknown resources on some streams..
   },
 
   resource_class: function(){
-    return eval(this.resource_type() + "s");
+    var type = this.resource_type();
+    if (type) return eval(type + "s");
   }
 
 });
