@@ -12,11 +12,11 @@ html: BUILD/basetool.html
 BUILD/base.css: BUILD css/*.css
 	cat css/*.css > BUILD/base.css
 
-BUILD/base.js: BUILD ../gojs/go.js js/*.js
-	cat ../gojs/go.js js/*.js > BUILD/base.js
+BUILD/base.js: BUILD ../gojs/go.js js/site/*.js
+	cat ../gojs/go.js js/site/*.js > BUILD/base.js
 
-BUILD/super.js: BUILD gcjs/*.js
-	cat gcjs/*.js > BUILD/super.js
+BUILD/super.js: BUILD js/gcjs/*.js
+	cat js/foundation/*.js js/gcjs/*.js > BUILD/super.js
 
 BUILD/basetool.html: BUILD tools/*.html tools
 	cat tools/*.html > BUILD/basetool.html
