@@ -15,12 +15,8 @@ $.extend(String.prototype, {
     return eval('(' + this + ')');
   },
   
-  resource: function(){
-    var c = this.resource_class();
-    if (c) return c.by_tag[this];
-  },
-  
   resource_type: function(){
+    // TODO: Ideally, when declaring a resource, you'd register a new table type with Resource.
     if (this.startsWith('e')) return 'Event';
     if (this.match(/^p\w+_\w+_\w+/)) return 'Op'; // old-style op ids
     if (this.startsWith('v')) return 'Op';
@@ -30,11 +26,6 @@ $.extend(String.prototype, {
     if (this.startsWith('City__')) return null;
     // throw 'unknown resource type for ' + this;
     return null;  // there are unknown resources on some streams..
-  },
-
-  resource_class: function(){
-    var type = this.resource_type();
-    if (type) return eval(type + "s");
   }
 
 });

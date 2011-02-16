@@ -1,17 +1,20 @@
-function Resource(tname, options){
-  this.tname = tname;
-  this.db = {};
-  this.by_tag = {};
-  this.all = [];
-  this.what_changed = {};
-  this.changed_timer = null;
+function Resource(table_name, options){
+  // represents a table in the in-browser database
+  this.tname = table_name;      // table name
+  this.db = {};                 // cached indexes
+  this.by_tag = {};             // everything in this table
+  this.all = [];                // cache of by_tag.values() (sometimes empty)
+  this.what_changed = {};       // dirty list
+  this.changed_timer = null;    // timer for updating indexes, UI, other things
+  this.something_added = false; // whether or not something has been added
   if (options) $.extend(this, options);
 }
 
-Resource.add_or_update = function(tag, item, xtra){
-  return tag.resource_class().add_or_update(tag, item, xtra);
+Resource.add_or_update = function(id, item, xtra){
+  return id.resource_class().add_or_update(id, item, xtra);
 };
 
+// Don't track changes initially
 Resource.handle_changes = false;
 
 $.extend(Resource.prototype, {
@@ -35,14 +38,14 @@ $.extend(Resource.prototype, {
       ? this.find(spec_words.join(' ')) 
       : (this.all || (this.all = $values(this.by_tag)));
 
-    if (action.charAt(0) == '=') 
-      return this.db[spec] = start_db.group_by(action.slice(1));
+    if (action.charAt(0) == '=')
+      return this.db[spec] = start_db.group_by(action.slice(1));      // find things equal to the scalar
     else if (action.charAt(0) == '#')
-      return this.db[spec] = start_db.index_by(action.slice(1));
+      return this.db[spec] = start_db.index_by(action.slice(1));      // find unique thing equal to the scalar
     else if (action.charAt(0) == ':')
-      return this.db[spec] = start_db.repackage(action.slice(1));
+      return this.db[spec] = start_db.repackage(action.slice(1));     // find things in the list
     else if (action.charAt(0) == ';')
-      return this.db[spec] = start_db.semirepackage(action.slice(1));
+      return this.db[spec] = start_db.semirepackage(action.slice(1)); // full-text search
 
     var actions = action.split('|');
     return this.db[spec] = actions.map(function(action){ return start_db[action] || []; }).flatten();
@@ -88,4 +91,16 @@ $.extend(Resource.prototype, {
     this.db = {};
   }
   
+});
+
+$.extend(String.prototype, {
+  resource: function(){
+    var c = this.resource_class();
+    if (c) return c.by_tag[this];
+  },
+
+  resource_class: function(){
+    var type = this.resource_type();
+    if (type) return eval(type + "s");
+  }
 });
