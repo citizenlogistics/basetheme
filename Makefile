@@ -15,8 +15,8 @@ BUILD/base.css: BUILD css/*.css
 BUILD/base.js: BUILD ../gojs/go.js js/*.js
 	cat ../gojs/go.js js/*.js > BUILD/base.js
 
-BUILD/super.js: BUILD ../gojs/*.js gcjs/*.js js/*.js
-	cat ../gojs/*.js gcjs/*.js js/*.js > BUILD/super.js
+BUILD/super.js: BUILD gcjs/*.js
+	cat gcjs/*.js > BUILD/super.js
 
 BUILD/basetool.html: BUILD tools/*.html tools
 	cat tools/*.html > BUILD/basetool.html
