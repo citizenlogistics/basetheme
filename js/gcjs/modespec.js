@@ -1,4 +1,5 @@
 $.extend(String.prototype, {
+  // a mode, start, end and tag specification. See doc/item-data.txt in gx/
   to_mspec: function() {
     var m = this.match(/^(\w+) ?(\d+)?-?(\d+)? ?(.*)$/)
     return {
