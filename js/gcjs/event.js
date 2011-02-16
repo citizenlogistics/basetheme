@@ -57,7 +57,7 @@ function event(annc_tag, created_ts, atype, actor_tag, re, atags, city_id, item_
   }, json_etc);
 }
 
-// old style chat, for backwards-compatibility
+// old style chat, for backwards-compatibility ("rem" means "remark")
 function rem(who, when, what, oids, msg, title){
   return ev(null, null, who, when, what, msg, { 
     actor_title: title || (who && who.resource() && who.resource().title) || 'Unknown Organizer'
