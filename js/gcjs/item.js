@@ -18,7 +18,7 @@ function item(city, tag, title, thumb_url, lat, lng, atags, latch, comm, req, x)
     tag = tag.replace('Person__', '').replace('Landmark__', '');
 
     // ignore items without lat+lng
-    if (!lat || !lng || lat == 0 || lng == 0) return null;
+    if (!lat || !lng || (lat == 0 && lng == 0)) return null;
 
     // spread out items that are geocoded to a single common city/zip point
     var pos = lat+","+lng;
