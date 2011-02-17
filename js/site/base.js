@@ -300,11 +300,15 @@ go.push({
   },
 
   stream_role_organizer: function() {
-    return window.stream_role == 'leader' || window.stream_role == 'organizer';
+    return window.stream_role == 'organizer' || window.stream_role == 'leader';
   },
 
   stream_role_agent: function() {
     return window.stream_role == 'agent';
+  },
+
+  stream_role_on_squad: function(){
+    return window.stream_role == 'agent' || window.stream_role == 'organizer' || window.stream_role == 'leader';
   },
 
   // data //
