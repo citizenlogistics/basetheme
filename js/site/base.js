@@ -27,9 +27,9 @@ function load_current_user(user){
   window.stream_names = {};
   window.squad_roles  = {};
   window.current_user = {};
-  if (!user.id) return;  
+  if (!user.id) return;
   window.current_user = user;
-  
+
   // this is for legacy javascript code
   // gone are: mobile_sent_ts, email_stage, mobile_stage, session_status
   window.authority   = user.id;
@@ -40,13 +40,15 @@ function load_current_user(user){
   window.user_bio    = user.bio;
   window.user_loc    = user.loc;
   window.user_thumb  = user.thumb_url;
-  
-  $.each(user.squad_roles, function(entry){ 
-    var squad_id = entry[0];
-    var name = entry[1];
-    var role = entry[2];    
-    window.stream_names[squad_id] = name;
-    window.squad_roles[squad_id]  = role;
+
+  $.each(user.squad_roles, function(i, entry){
+    if (entry) {
+      var squad_id = entry[0];
+      var name = entry[1];
+      var role = entry[2];
+      window.stream_names[squad_id] = name;
+      window.squad_roles[squad_id]  = role;
+    }
   });
 }
 
@@ -58,7 +60,7 @@ function load_current_squad(squad){
   window.current_squad = squad;
   
   // for legacy javascript
-  window.current_stream = squad.id;  
+  window.current_stream = squad.id;
   window.stream_role = window.squad_roles[squad.id];
   $.each(squad, function(k, v){ window["current_stream_" + k] = v; });
   window.current_stream_thumb   = squad.thumb_url;
@@ -293,15 +295,25 @@ go.push({
   },
 
   // roles & auth
+  stream_role_leader: function() {
+    return window.stream_role == 'leader';
+  },
+
   stream_role_organizer: function() {
     return window.stream_role == 'leader' || window.stream_role == 'organizer';
   },
 
+  stream_role_agent: function() {
+    return window.stream_role == 'agent';
+  },
+
   // data //
-  viewer_url: function() { return '/'+current_stream; },
-  invite_url: function() { return '/'+current_stream+'/signup'; },
+  viewer_url         : function() { return '/'+current_stream                   ; },
+  invite_url         : function() { return '/'+current_stream+'/signup'         ; },
   forgot_password_url: function() { return '/'+current_stream+'/forgot_password'; },
-  join_url: function() { return '/'+current_stream+'/join'; }
+  join_url           : function() { return '/'+current_stream+'/join'           ; },
+  home_url           : function() { return '/'+current_stream+'/home'           ; },
+  live_map_url       : function() { return '/'+current_stream+'/live'           ; }
 });
 
 This.user = { tag: 'pAnon'};
