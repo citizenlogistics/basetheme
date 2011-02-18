@@ -45,9 +45,9 @@ function load_current_user(user){
     if (entry) {
       var squad_id = entry[0];
       var name = entry[1];
-      var role = entry[2];
+      var roles = entry[2];
       window.stream_names[squad_id] = name;
-      window.squad_roles[squad_id]  = role;
+      window.squad_roles[squad_id]  = roles;
     }
   });
 }
@@ -61,7 +61,8 @@ function load_current_squad(squad){
   
   // for legacy javascript
   window.current_stream = squad.id;
-  window.stream_role = window.squad_roles[squad.id];
+
+  window.stream_role = window.squad_roles[squad.id][0];
   $.each(squad, function(k, v){ window["current_stream_" + k] = v; });
   window.current_stream_thumb   = squad.thumb_url;
   window.current_stream_systems = squad.systems_letters;
@@ -304,7 +305,7 @@ go.push({
   },
 
   stream_role_agent: function() {
-    return window.stream_role == 'agent';
+    return window.squad_roles[window.current_stream].indexOf('agent') >= 0;
   },
 
   stream_role_on_squad: function(){
