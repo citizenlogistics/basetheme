@@ -315,6 +315,7 @@ go.push({
   // data //
   viewer_url         : function() { return '/'+current_stream                   ; },
   invite_url         : function() { return '/'+current_stream+'/signup'         ; },
+  login_url          : function() { return '/'+current_stream+'/login'          ; },
   forgot_password_url: function() { return '/'+current_stream+'/forgot_password'; },
   join_url           : function() { return '/'+current_stream+'/join'           ; },
   home_url           : function() { return '/'+current_stream+'/home'           ; },
