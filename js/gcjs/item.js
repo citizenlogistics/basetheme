@@ -70,22 +70,46 @@ function off(tag){
 
 
 Agents = new Resource('Agent', {
+  // TODO: This should be called Items, not Agents, because it runs for Landmarks too
   enhancer: function(agent) {
     if (GCLibClient.agent_enhanced) GCLibClient.agent_enhanced(agent);
   },
-  
+
   changed: function(what_changed) {
     if (what_changed[This.user.tag]) $.extend(This.user, what_changed[This.user.tag]);
 
     $.each(what_changed, function(id, agent){
       if (GCLibClient.agent_changed) GCLibClient.agent_changed(agent);
     });
-    
+
     if (Agents.something_added) {
       Agents.here_changed();
     }
+
+    var new_cities = [];
+    for (var w in what_changed) {
+      if (w.slice(0, 1) == 'p') {
+        // scan all recently changed items in what changed
+        if (what_changed[w].city_id && ! cities[what_changed[w].city_id]) {
+          // if city not in cities
+          if (new_cities.indexOf(what_changed[w].city_id) < 0) {
+            new_cities.push(what_changed[w].city_id);
+          }
+        }
+      }
+    }
+
+    if (new_cities.length) {
+      // get new cities
+      $.get('/api/all', {ids:new_cities.map(function (i) { return 'c'+i}).join(',')}, function (response) {
+        for (var ci=0; ci < response.length; ci++) {
+          var c = response[ci];
+          city(c['id'], c['name'], c['lat'], c['long']);
+        }
+      }, 'json');
+    }
   },
-  
+
   here_changed: function(){
     This.agents = Agents.here();
     go.trigger('agents_here_changed');
