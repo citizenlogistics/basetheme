@@ -101,7 +101,7 @@ Agents = new Resource('Agent', {
 
     if (new_cities.length) {
       // get new cities
-      $.get('/api/all', {ids:new_cities.map(function (i) { return 'c'+i}).join(',')}, function (response) {
+      $.get('/api/all', {ids:new_cities.map(function (i) {return 'c'+i;}).join(',')}, function (response) {
         for (var ci=0; ci < response.length; ci++) {
           var c = response[ci];
           city(c['id'], c['name'], c['lat'], c['long']);
