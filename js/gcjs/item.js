@@ -78,7 +78,7 @@ Agents = new Resource('Agent', {
   changed: function(what_changed) {
     if (what_changed[This.user.tag]) $.extend(This.user, what_changed[This.user.tag]);
 
-    $.each(what_changed, function(id, agenqt){
+    $.each(what_changed, function(id, agent){
       if (GCLibClient.agent_changed) GCLibClient.agent_changed(agent);
     });
 
