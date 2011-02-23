@@ -87,8 +87,10 @@ Agents = new Resource('Agent', {
     }
 
     var new_cities = [];
+    var should_redraw_cities = false;
     for (var w in what_changed) {
       if (w.slice(0, 1) == 'p') {
+        should_redraw_cities = true;
         // scan all recently changed items in what changed
         if (what_changed[w].city_id && ! cities[what_changed[w].city_id]) {
           // if city not in cities
@@ -106,8 +108,10 @@ Agents = new Resource('Agent', {
           var c = response[ci];
           city(c['id'], c['name'], c['lat'], c['lng']);
         }
-        go.trigger('new_cities');
+        go.trigger('redraw_cities');
       }, 'json');
+    } else if (should_redraw_cities) {
+      go.trigger('redraw_cities');
     }
   },
 
