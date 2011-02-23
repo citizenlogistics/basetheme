@@ -78,7 +78,7 @@ Agents = new Resource('Agent', {
   changed: function(what_changed) {
     if (what_changed[This.user.tag]) $.extend(This.user, what_changed[This.user.tag]);
 
-    $.each(what_changed, function(id, agent){
+    $.each(what_changed, function(id, agenqt){
       if (GCLibClient.agent_changed) GCLibClient.agent_changed(agent);
     });
 
@@ -104,8 +104,9 @@ Agents = new Resource('Agent', {
       $.get('/api/all', {ids:new_cities.map(function (i) {return 'c'+i;}).join(',')}, function (response) {
         for (var ci=0; ci < response.length; ci++) {
           var c = response[ci];
-          city(c['id'], c['name'], c['lat'], c['long']);
+          city(c['id'], c['name'], c['lat'], c['lng']);
         }
+        go.trigger('new_cities');
       }, 'json');
     }
   },
