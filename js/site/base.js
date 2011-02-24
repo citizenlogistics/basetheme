@@ -32,6 +32,7 @@ function load_current_user(user){
 
   // this is for legacy javascript code
   // gone are: mobile_sent_ts, email_stage, mobile_stage, session_status
+  window.avails      = user.avails;
   window.authority   = user.id;
   window.pw_set      = user.has_password;
   window.user_email  = user.email;
@@ -314,7 +315,10 @@ go.push({
 
   // data //
   viewer_url         : function() { return '/'+current_stream                   ; },
+  settings_url       : function() { return '/'+current_stream+'/settings'       ; },
+  admin_url          : function() { return '/'+current_stream+'/admin'          ; },
   invite_url         : function() { return '/'+current_stream+'/signup'         ; },
+  signup_url         : function() { return '/'+current_stream+'/signup'         ; },
   login_url          : function() { return '/'+current_stream+'/login'          ; },
   forgot_password_url: function() { return '/'+current_stream+'/forgot_password'; },
   join_url           : function() { return '/'+current_stream+'/join'           ; },
