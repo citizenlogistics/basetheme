@@ -126,9 +126,9 @@ body.wide #main_column {width:800px;}
 #primary h2 img, #primary h3 img, #primary h4 img {margin: 0 4px -3px 0;}
 
 #primary .op {margin: 0 0 15px;}
-#primary #organizer_thumb {float: left; height: 72px; width: 72px;}
+#primary #squad_thumb {float: left; height: 72px; width: 72px;}
 #primary #directive_col {float: left; width: 400px;}
-#primary #organizer_thumb {margin-right: 15px;}
+#primary #squad_thumb {margin-right: 15px;}
 #primary h3.thanks {font-size: 22px; margin: 15px 0 0 0;}
 #primary .status {
   color: #FF763C;
