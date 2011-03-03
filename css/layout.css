@@ -301,7 +301,7 @@ body span.hidden_unless_active.active { display: inline; }
   padding: 15px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 15px;
+  margin-top: 60px;
   -webkit-box-shadow: 1px  1px 4px  #000;
   -moz-box-shadow: 1px  1px 4px  #000;
 }

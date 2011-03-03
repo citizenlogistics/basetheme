@@ -219,12 +219,12 @@ go.push({
 
   flash: function(){
     var flash = $.cookie('flash');
-    if (flash) {
+    if (flash && flash != ' ') {
       var modal_flash = $('.active.modal .flash');
       if (modal_flash.length) modal_flash.html(flash).show();
       else $.jGrowl(flash);
 
-      $.cookie('flash', '');
+      $.cookie('flash', ' ');
     }
   },
 
