@@ -63,7 +63,9 @@ function load_current_squad(squad){
   // for legacy javascript
   window.current_stream = squad.id;
 
-  window.stream_role = window.squad_roles[squad.id][0];
+  if (window.squad_roles[squad.id]) {
+    window.stream_role = window.squad_roles[squad.id][0];
+  }
   $.each(squad, function(k, v){ window["current_stream_" + k] = v; });
   window.current_stream_thumb   = squad.thumb_url;
   window.current_stream_systems = squad.systems_letters;
