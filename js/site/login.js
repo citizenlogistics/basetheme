@@ -14,5 +14,13 @@ go.push({
 
   login_complete_default: function() {
     go('tool=start');
+  },
+
+  send_reset_link: function() {
+    console.debug(This.form_data);
+    This.form_data.target = '/' + current_stream + '/reset_password';
+    This.form_data.squad = window.current_stream;
+    $.post('/api/one_time_auth', This.form_data, go.onwards);
   }
+
 });
